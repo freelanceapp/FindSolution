@@ -78,6 +78,7 @@ public class ActivationCodeActivity extends AppCompatActivity {
             @Override
             public void onCompleted(String code) {
                 mCode = code;
+//                mCode = code;
             }
         });
     }
