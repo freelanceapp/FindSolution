@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Find Solution</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="phone_number">phone number</string>
+    <string name="next">next</string>
+    <string name="Skip">skip</string>
+    <string name="confirm">confirm</string>
+    <string name="plz_enter_code">please enter verification code</string>
+    <string name="resend_code">send code again</string>
+    <string name="name">name</string>
+    <string name="start">start</string>
+    <string name="activation_code">verification code</string>
+</resources>

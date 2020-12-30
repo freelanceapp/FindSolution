@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.SplashActivity">
+
+        <ImageView
+            android:id="@+id/activity_add_name_iv_logo"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_margin="@dimen/_30sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/iv_bottom_vector"
+            android:src="@drawable/bottom_vector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_10sdp"
+            android:elevation="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_add_name_iv_logo">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleImageView"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_margin="@dimen/_20sdp"
+                    android:elevation="@dimen/_11sdp"
+                    android:src="@drawable/ic_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="@dimen/_12sdp"
+                    android:src="@drawable/ic_edit"
+                    app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+                    app:layout_constraintStart_toStartOf="@+id/circleImageView" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/circleImageView">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginEnd="0dp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:background="@drawable/et_background"
+                        android:hint="محمد " />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="@dimen/_minus8sdp"
+                        android:layout_marginEnd="25dp"
+                        android:layout_marginBottom="31dp"
+                        android:background="#fff"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:text="@string/name"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/activity_add_name_btn_confirm"
+                    android:text="@string/start"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="@style/btn_main"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

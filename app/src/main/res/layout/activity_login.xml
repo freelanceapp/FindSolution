@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.SplashFragment">
+
+        <ImageView
+            android:id="@+id/activity_login_iv_logo"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:layout_margin="40dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_10sdp"
+            android:elevation="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@+id/activity_login_iv_bottom_vector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_login_iv_logo">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/activity_login_tv_login"
+                    android:text="@string/login"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/tv_large_bold" />
+
+                <ImageView
+                    android:id="@+id/activity_login_iv_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_login_tv_login" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/activity_login_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/activity_login_btn_next"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_login_iv_line">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:padding="@dimen/_10sdp"
+
+                        >
+
+                        <TextView
+                            android:id="@+id/activity_login_country_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_weight="1"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"
+                            android:text="+996"
+                            android:textColor="@color/black"
+                            app:drawableStartCompat="@drawable/ic_saudi_arabia"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/activity_login_view"
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:background="#494848"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/activity_login_country_id"
+                            app:layout_constraintStart_toStartOf="@id/activity_login_et_phone_number"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <EditText
+                            android:id="@+id/activity_login_et_phone_number"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:background="@null"
+                            android:gravity="center_vertical"
+                            android:hint="@string/phone_number"
+                            android:paddingStart="10dp"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/activity_login_view"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/activity_login_btn_next"
+                    android:text="@string/next"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="@style/btn_main"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/activity_login_iv_bottom_vector"
+            android:layout_width="320dp"
+            android:layout_height="145dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/bottom_vector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
