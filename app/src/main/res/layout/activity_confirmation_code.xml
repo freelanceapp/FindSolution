@@ -39,11 +39,11 @@
 
                 <TextView
                     android:id="@+id/activity_confirmation_code_tv_confirmation_code"
+                    style="@style/tv_large_bold"
                     android:text="@string/activation_code"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    style="@style/tv_large_bold" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/activity_confirmation_code_iv_line"
@@ -71,6 +71,7 @@
                     app:layout_constraintHorizontal_bias="0.503"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_confirmation_code_iv_line" />
+
                 <TextView
                     android:id="@+id/activity_confirmation_code_tv_number"
                     android:layout_width="wrap_content"
@@ -84,40 +85,38 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.503"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_confirmation_code_tv_one"
-                    />
-
-
+                    app:layout_constraintTop_toBottomOf="@+id/activity_confirmation_code_tv_one" />
 
 
                 <com.raycoarana.codeinputview.CodeInputView
                     android:id="@+id/activity_confirmation_code_input_code"
-                    android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:underline_color="#457ad1"
-                    app:underline_selected_color="#9e1ace"
+                    android:layout_marginTop="20dp"
                     app:code_text_color="#b12eff"
                     app:error_color="#77ce9d"
-app:input_type="numeric"                    app:length_of_code="6"
+                    app:input_type="numeric"
                     app:layout_constraintBottom_toTopOf="@+id/activity_confirmation_code_btn_confirm"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.503"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_confirmation_code_tv_number"
-                    />
+                    app:length_of_code="6"
+                    app:underline_color="#457ad1"
+                    app:underline_selected_color="#9e1ace" />
 
                 <Button
                     android:id="@+id/activity_confirmation_code_btn_confirm"
+                    style="@style/btn_main"
                     android:text="@string/next"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    style="@style/btn_main" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
+
         <ImageView
             android:id="@+id/activity_confirmation_code_iv_bottom_vector"
             android:layout_width="320dp"

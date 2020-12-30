@@ -3,11 +3,8 @@ package com.semicode.findsolution.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -18,19 +15,19 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.semicode.findsolution.R;
+import com.raycoarana.codeinputview.OnCodeCompleteListener;
 import com.semicode.findsolution.databinding.ActivityConfirmationCodeBinding;
 
 import java.util.concurrent.TimeUnit;
 
 
-public class ActivationCodeActivity extends AppCompatActivity implements View.OnClickListener {
+public class ActivationCodeActivity extends AppCompatActivity {
     private ActivityConfirmationCodeBinding binding;
     private FirebaseAuth mAuth;
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
 
-    private String phoneNumber, mVerificationId;
+    private String phoneNumber, mVerificationId, mCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +65,24 @@ public class ActivationCodeActivity extends AppCompatActivity implements View.On
 
         phoneNumber = "+2" + getIntent().getStringExtra("PHONE_NUMBER");
         binding.activityConfirmationCodeTvNumber.setText(phoneNumber);
-        binding.activityConfirmationCodeBtnConfirm.setOnClickListener(this);
         startPhoneNumberVerification(phoneNumber);
-        binding.activityConfirmationCodeInputCode.getCode();
+        binding.activityConfirmationCodeBtnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HelperMethod.makeTextToast(getApplicationContext(), "confirm codE clicked");
+                verifyPhoneNumberWithCode(mVerificationId, mCode);
+            }
+        });
+
+        binding.activityConfirmationCodeInputCode.addOnCompleteListener(new OnCodeCompleteListener() {
+            @Override
+            public void onCompleted(String code) {
+                mCode = code;
+            }
+        });
     }
 
     private void startPhoneNumberVerification(String phoneNumber) {
-        // [START start_phone_auth]
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(mAuth)
                         .setPhoneNumber(phoneNumber)       // Phone number to verify
@@ -117,7 +125,7 @@ public class ActivationCodeActivity extends AppCompatActivity implements View.On
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
+                            HelperMethod.makeTextToast(getApplicationContext(), "complet LogiN");
                             Intent intent = new Intent(ActivationCodeActivity.this, AddNameActivity.class);
                             startActivity(intent);
 
@@ -125,23 +133,19 @@ public class ActivationCodeActivity extends AppCompatActivity implements View.On
 
                         } else {
 
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-
-                                binding.activityConfirmationCodeInputCode.setError("Invalid code.");
-                                //
-                            }
+                            HelperMethod.makeTextToast(getApplicationContext(), "can not log");
 
                         }
                     }
                 });
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.activity_add_name_btn_confirm:
-                verifyPhoneNumberWithCode(mVerificationId, binding.activityConfirmationCodeInputCode.getCode());
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.activity_add_name_btn_confirm:
+//
+//                break;
+//        }
+//    }
 }
