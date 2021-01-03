@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/activity_add_name_iv_logo"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="@dimen/_110sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/_30sdp"
             android:scaleType="fitXY"
             android:src="@drawable/logo"
@@ -70,6 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/activity_add_name_btn_confirm"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/circleImageView">
 

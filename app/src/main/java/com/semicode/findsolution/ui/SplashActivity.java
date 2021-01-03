@@ -33,7 +33,6 @@ public class SplashActivity extends AppCompatActivity {
         transition.setDuration(500);
         getWindow().setEnterTransition(transition);
         getWindow().setExitTransition(transition);
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

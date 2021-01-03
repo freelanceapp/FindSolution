@@ -8,17 +8,24 @@
     </data>
 
     <nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout
-        android:id="@+id/drawer"
+        android:id="@+id/activity_home_drawer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+
+
+        >
 
         <nl.psdcompany.duonavigationdrawer.views.DuoMenuView
+            android:id="@+id/activity_home_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:tag="@string/tag_menu"
-            app:footer="@layout/header"
+            app:footer="@layout/footer"
             app:header="@layout/header"
+            app:background="@color/white"
+            android:paddingTop="@dimen/_20sdp"
+
 
             />
 
@@ -35,7 +42,7 @@
                 android:elevation="@dimen/_11sdp">
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
+                    android:id="@+id/activity_home_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/colorAccent"
@@ -50,7 +57,7 @@
                 android:elevation="@dimen/_6sdp">
 
                 <FrameLayout
-                    android:id="@+id/container"
+                    android:id="@+id/activity_home_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white"

@@ -16,9 +16,10 @@
         <item name="android:maxLength">1</item>
     </style>
 
+
     <style name="iv_bottom_vector">
-        <item name="android:layout_width">@dimen/_250sdp</item>
-        <item name="android:layout_height">@dimen/_90sdp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:scaleType">fitXY</item>
         <item name="android:paddingStart">@dimen/_20sdp</item>
         <item name="android:paddingEnd">@dimen/_20sdp</item>
@@ -38,10 +39,14 @@
         <item name="android:layout_height">@dimen/_25sdp</item>
         <item name="android:layout_margin">@dimen/_10sdp</item>
         <item name="android:background">@drawable/btn_background_25_radius</item>
-        <item name="android:paddingHorizontal">@dimen/_30sdp</item>
+        <item name="android:paddingStart">@dimen/_30sdp</item>
+        <item name="android:paddingEnd">@dimen/_30sdp</item>
         <item name="android:textColor">#FFF</item>
         <item name="android:textSize">@dimen/medium_text</item>
         <item name="android:textStyle">bold</item>
     </style>
-
+    <style name="dialog_congratulation_animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_congratulation_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_congratulation_exit</item>
+    </style>
 </resources>

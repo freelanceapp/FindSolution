@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/activity_confirmation_code_iv_logo"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="40dp"
             android:scaleType="fitXY"
             android:src="@drawable/logo"
@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/_10sdp"
@@ -88,22 +89,33 @@
                     app:layout_constraintTop_toBottomOf="@+id/activity_confirmation_code_tv_one" />
 
 
-                <com.raycoarana.codeinputview.CodeInputView
-                    android:id="@+id/activity_confirmation_code_input_code"
+                <com.chaos.view.PinView
+                    android:id="@+id/activity_confirmation_code_pin_view"
+                    style="@style/PinWidget.PinView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:code_text_color="#b12eff"
-                    app:error_color="#77ce9d"
-                    app:input_type="numeric"
-                    app:layout_constraintBottom_toTopOf="@+id/activity_confirmation_code_btn_confirm"
+                    android:layout_gravity="center_horizontal"
+                    android:cursorVisible="true"
+                    android:inputType="number"
+                    android:itemBackground="@drawable/pin_view_item"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="15sp"
+                    app:cursorColor="@color/colorAccent"
+                    app:cursorWidth="2dp"
+                    app:hideLineWhenFilled="true"
+                    app:itemCount="6"
+                    app:itemHeight="40dp"
+                    app:itemRadius="5dp"
+                    app:itemSpacing="8dp"
+                    app:itemWidth="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.503"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_confirmation_code_tv_number"
-                    app:length_of_code="6"
-                    app:underline_color="#457ad1"
-                    app:underline_selected_color="#9e1ace" />
+                    app:layout_constraintTop_toBottomOf="@id/activity_confirmation_code_tv_number"
+                    app:layout_constraintVertical_bias=".1"
+                    app:lineColor="@color/transparent"
+                    app:lineWidth="0dp"
+                    app:viewType="rectangle" />
 
                 <Button
                     android:id="@+id/activity_confirmation_code_btn_confirm"
@@ -113,14 +125,46 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
+                <TextView
+                    android:id="@+id/activity_confirmation_code_tv_resend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/small_text"
+                    app:layout_constraintBottom_toTopOf="@+id/activity_confirmation_code_btn_confirm"
+                    app:layout_constraintEnd_toEndOf="@+id/activity_confirmation_code_pin_view"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/activity_confirmation_code_pin_view"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_confirmation_code_pin_view"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/activity_confirmation_code_btn_resend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/resend_code"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/small_text"
+                    android:clickable="false"
+                    app:layout_constraintBottom_toTopOf="@+id/activity_confirmation_code_btn_confirm"
+                    app:layout_constraintEnd_toEndOf="@+id/activity_confirmation_code_pin_view"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/activity_confirmation_code_pin_view"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_confirmation_code_pin_view"
+                    app:layout_constraintVertical_bias="0.0" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/activity_confirmation_code_iv_bottom_vector"
-            android:layout_width="320dp"
-            android:layout_height="145dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="fitXY"
             android:src="@drawable/bottom_vector"
             app:layout_constraintBottom_toBottomOf="parent"

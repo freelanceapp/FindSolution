@@ -37,7 +37,7 @@ public class HelperMethod {
     static ConnectivityManager cm;
 
     public static void makeTextToast(Context context, String text) {
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, text, Toast.LENGTH_LONG).show();
 
     }
 

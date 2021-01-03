@@ -10,5 +10,20 @@
     <string name="resend_code">إعادة أرسل الرمز</string>
     <string name="name">الاسم</string>
     <string name="start">ابدا</string>
+    <string name="invalid_code">الكود غير صحيح</string>
     <string name="activation_code">كود التفعيل</string>
+    <string name="wait">انتظر</string>
+    <string name="failed">فشل</string>
+    <string name="ok">ok</string>
+    <string name="notifications">الاشعارات</string>
+    <string name="logout">logout</string>
+    <string-array name="menuOptions">
+        <item name="home">Home</item>
+        <item name="my_account">My Account</item>
+        <item name="Subscription">Subscription</item>
+        <item name="connect_us">Connect Us</item>
+        <item name="about_app">About app</item>
+        <item name="Terms_and_Conditions">Terms and Conditions</item>
+
+    </string-array>
 </resources>

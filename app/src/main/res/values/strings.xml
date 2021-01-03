@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Find Solution</string>
+    <string name="app_name" translatable="false">Find Solution</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="phone_number">phone number</string>
@@ -8,7 +8,23 @@
     <string name="confirm">confirm</string>
     <string name="plz_enter_code">please enter verification code</string>
     <string name="resend_code">send code again</string>
-    <string name="name">name</string>
     <string name="start">start</string>
+    <string name="name">name</string>
+    <string name="invalid_code">invalid code</string>
+    <string name="wait">wait</string>
+    <string name="failed">failed</string>
     <string name="activation_code">verification code</string>
+    <string name="ok">ok</string>
+    <string name="notifications">notification</string>
+    <string name="logout">logout</string>
+    <string-array name="menuOptionsTittles">
+        <item name="home">Home</item>
+        <item name="my_account">My Account</item>
+        <item name="Subscription">Subscription</item>
+        <item name="connect_us">Connect Us</item>
+        <item name="about_app">About app</item>
+        <item name="Terms_and_Conditions">Terms and Conditions</item>
+
+
+    </string-array>
 </resources>
