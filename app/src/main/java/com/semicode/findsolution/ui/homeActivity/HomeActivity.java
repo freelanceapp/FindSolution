@@ -82,6 +82,7 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
             @Override
             public void onHeaderClicked() {
 
+
             }
 
             @Override
