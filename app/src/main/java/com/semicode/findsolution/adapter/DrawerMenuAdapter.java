@@ -5,11 +5,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
 
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.model.MenuMoudel;
@@ -39,13 +41,18 @@ public class DrawerMenuAdapter extends BaseAdapter {
         return mOptions.get(position);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @SuppressLint("ResourceAsColor")
     public void setViewSelected(int position, boolean selected) {
 
         // Looping through the options in the menu
+
         // Selecting the chosen option
+
         for (int i = 0; i < mOptionViews.size(); i++) {
             if (i == position) {
                 mOptionViews.get(i).setSelected(selected);
+                mOptionViews.get(i).setBackgroundColor(context.getColor(R.color.soft_blue));
             } else {
                 mOptionViews.get(i).setSelected(!selected);
             }
@@ -60,9 +67,11 @@ public class DrawerMenuAdapter extends BaseAdapter {
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final String option = mOptions.get(position).getTittle();
+        final String optionTittle = mOptions.get(position).getTittle();
+        final Drawable optionImage = mOptions.get(position).getImage();
 
         // Using the DuoOptionView to easily recreate the demo
+
         final DuoOptionView optionView;
 
         if (convertView == null) {
@@ -72,20 +81,18 @@ public class DrawerMenuAdapter extends BaseAdapter {
         }
         TextView textView = optionView.getRootView().findViewById(R.id.duo_view_option_text);
         textView.setTextColor(Color.BLACK);
-//        ImageView imageView = optionView.getRootView().findViewById(R.id.duo_view_option_selector);
-
-        String uri = mOptions.get(position).getImage();
-        // where myresource (without the extension) is the file
-
-        int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
+        textView.setTextSize(16);
 
 
-        Drawable res = context.getResources().getDrawable(imageResource);
+//        String uri = mOptions.get(position).getImage();
 
+//        int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
 
         // Using the DuoOptionView's default selectors
-//        optionView.bind(option, context.getDrawable(R.drawable.ic_logout));
-        optionView.bind(option,res);
+        // optionView.bind(option, context.getDrawable(R.drawable.ic_logout));
+
+        optionView.bind(optionTittle, optionImage);
+
         // Adding the views to an array list to handle view selection
         mOptionViews.add(optionView);
 

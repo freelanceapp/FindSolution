@@ -23,7 +23,7 @@ public class ActivityHomePresenter {
 
     private AboutAppFragment aboutAppFragment;
     private ConnectUsFragment connectUsFragment;
-    private HomeFragment homeFragment;
+    HomeFragment homeFragment;
     private MyAccountFragment myAccountFragment;
     private SubscriptionFragment subscriptionFragment;
     private TermsAndConditionFragment termsAndConditionFragment;
@@ -41,16 +41,16 @@ public class ActivityHomePresenter {
 
         switch (position) {
             case 1:
-                displayFragmentAboutApp();
-                break;
-            case 2:
-                displayFragmentConnectUs();
-                break;
-            case 3:
                 displayFragmentMyAccount();
                 break;
-            case 4:
+            case 2:
                 displayFragmentSubscription();
+                break;
+            case 3:
+                displayFragmentConnectUs();
+                break;
+            case 4:
+                displayFragmentAboutApp();
                 break;
             case 5:
                 displayFragmentTermsAndCondition();
@@ -63,6 +63,8 @@ public class ActivityHomePresenter {
     }
 
     private void displayFragmentHome() {
+        view.onHomeFragmentSelected();
+
         if (homeFragment == null) {
             homeFragment = HomeFragment.newInstance();
         }

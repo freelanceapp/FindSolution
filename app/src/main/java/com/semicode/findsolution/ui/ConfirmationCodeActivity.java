@@ -20,6 +20,7 @@ import com.semicode.findsolution.databinding.ActivityConfirmationCodeBinding;
 import com.semicode.findsolution.mvp.activtyConfirmationCode.ActivityConfirmationCodePresenter;
 import com.semicode.findsolution.mvp.activtyConfirmationCode.ActivityConfirmationCodeView;
 import com.semicode.findsolution.share.Common;
+import com.semicode.findsolution.share.HelperMethod;
 
 import java.util.Locale;
 
@@ -94,7 +95,7 @@ public class ConfirmationCodeActivity extends AppCompatActivity implements Activ
 
     @Override
     public void onCounterStarted(String time) {
-        binding.activityConfirmationCodeTvResend.setText(String.format(Locale.ENGLISH, "%s %s", getString(R.string.resend_code), time));
+        binding.activityConfirmationCodeTvResend.setText(String.format(Locale.ENGLISH, "%s %s","", time));
         binding.activityConfirmationCodeTvResend.setBackgroundResource(R.color.transparent);
     }
 

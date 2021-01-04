@@ -56,7 +56,10 @@ dependencies {
     implementation 'com.raycoarana.codeinputview:codeinputview:2.1.1'
 //    navigation-drawer
     implementation 'nl.psdcompany:duo-navigation-drawer:3.0.0'
-//pinview
+//      pinView
     implementation 'com.chaos.view:pinview:1.4.3'
+//       gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+
 
 }

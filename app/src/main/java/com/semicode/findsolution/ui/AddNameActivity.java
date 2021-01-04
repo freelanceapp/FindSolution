@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.databinding.ActivityAddNameBinding;
+import com.semicode.findsolution.share.HelperMethod;
 import com.semicode.findsolution.ui.homeActivity.HomeActivity;
 
 

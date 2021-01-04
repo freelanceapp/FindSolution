@@ -73,7 +73,7 @@ public class ActivityConfirmationCodePresenter {
 
         PhoneAuthProvider.getInstance()
                 .verifyPhoneNumber(
-                        phone_code+phone,
+                        phone_code + phone,
                         120,
                         TimeUnit.SECONDS,
                         activity,
@@ -110,6 +110,8 @@ public class ActivityConfirmationCodePresenter {
 
                 }
             });
+        } else {
+            sendSmsCode();
         }
 
     }

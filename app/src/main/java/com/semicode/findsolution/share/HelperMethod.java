@@ -1,4 +1,4 @@
-package com.semicode.findsolution.ui;
+package com.semicode.findsolution.share;
 
 import android.Manifest;
 import android.app.Activity;

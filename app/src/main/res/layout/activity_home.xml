@@ -20,11 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:paddingTop="@dimen/_20sdp"
             android:tag="@string/tag_menu"
+            app:background="@color/white"
             app:footer="@layout/footer"
             app:header="@layout/header"
-            app:background="@color/white"
-            android:paddingTop="@dimen/_20sdp"
 
 
             />
@@ -38,7 +38,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="?attr/actionBarSize"
                 android:elevation="@dimen/_11sdp">
 
                 <androidx.appcompat.widget.Toolbar
@@ -60,7 +60,7 @@
                     android:id="@+id/activity_home_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/white"
+                    android:background="@color/white"
                     android:padding="?attr/listPreferredItemPaddingRight" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>

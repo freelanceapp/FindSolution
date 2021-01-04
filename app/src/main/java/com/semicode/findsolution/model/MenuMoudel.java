@@ -1,10 +1,12 @@
 package com.semicode.findsolution.model;
 
+import android.graphics.drawable.Drawable;
+
 public class MenuMoudel {
     String Tittle;
-    String image;
+    Drawable image;
 
-    public MenuMoudel(String tittle, String image) {
+    public MenuMoudel(String tittle, Drawable image) {
         Tittle = tittle;
         this.image = image;
     }
@@ -17,11 +19,11 @@ public class MenuMoudel {
         Tittle = tittle;
     }
 
-    public String getImage() {
+    public Drawable getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Drawable image) {
         this.image = image;
     }
 }
