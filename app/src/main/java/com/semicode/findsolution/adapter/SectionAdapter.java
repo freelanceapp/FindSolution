@@ -67,10 +67,10 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
 
             textView = itemView.findViewById(R.id.item_rv_section_tv);
             imageView = itemView.findViewById(R.id.item_rv_section_iv);
-            textView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    itemClick.onItemClick(getAdapterPosition());
+                    itemClick.onSectionClick(getAdapterPosition());
 
                 }
             });
@@ -78,14 +78,14 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
 
 
         @Override
-        public void onItemClick(int position) {
-            itemClick.onItemClick(getAdapterPosition());
+        public void onSectionClick(int position) {
+            itemClick.onSectionClick(getAdapterPosition());
 
         }
     }
 
     public interface ONSectionClick {
-        void onItemClick(int position);
+        void onSectionClick(int position);
 
     }
 }

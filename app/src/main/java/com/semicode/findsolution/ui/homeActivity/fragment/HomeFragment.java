@@ -55,17 +55,17 @@ public class HomeFragment extends Fragment implements SectionAdapter.ONSectionCl
     }
 
     private void getSectionData() {
-        datalist.add(new SectionModel("one",R.drawable.ic_section_legal));
-        datalist.add(new SectionModel("two",R.drawable.ic_section_engineering));
-        datalist.add(new SectionModel("tree",R.drawable.ic_section_healthy));
-        datalist.add(new SectionModel("four",R.drawable.ic_section_finance));
-        datalist.add(new SectionModel("five",R.drawable.ic_section_administrative));
-        datalist.add(new SectionModel("sex",R.drawable.ic_section_auditors_services));
+        datalist.add(new SectionModel("one", R.drawable.ic_section_legal));
+        datalist.add(new SectionModel("two", R.drawable.ic_section_engineering));
+        datalist.add(new SectionModel("tree", R.drawable.ic_section_healthy));
+        datalist.add(new SectionModel("four", R.drawable.ic_section_finance));
+        datalist.add(new SectionModel("five", R.drawable.ic_section_administrative));
+        datalist.add(new SectionModel("sex", R.drawable.ic_section_auditors_services));
     }
 
     @Override
-    public void onItemClick(int position) {
-        HelperMethod.makeTextToast(getActivity()," clicked   "+position);
+    public void onSectionClick(int position) {
+        HelperMethod.makeTextToast(getActivity(), " clicked   " + position);
         Intent intent = new Intent(getActivity(), SectionActivity.class);
         getActivity().startActivity(intent);
     }
