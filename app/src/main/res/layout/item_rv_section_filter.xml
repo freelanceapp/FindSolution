@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/_30sdp"
     android:padding="@dimen/_7sdp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/_20sdp"
@@ -26,15 +26,15 @@
             android:id="@+id/item_rv_section_filter_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="@dimen/_5sdp"
-            android:padding="@dimen/_5sdp"
-            android:text="all"
+            android:text="Engineering"
             android:textColor="@color/gray" />
 
         <ImageView
             android:id="@+id/item_rv_section_filter_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
             />
 
     </LinearLayout>

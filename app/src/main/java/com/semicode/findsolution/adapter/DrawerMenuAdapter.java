@@ -29,6 +29,7 @@ public class DrawerMenuAdapter extends BaseAdapter {
     public DrawerMenuAdapter(ArrayList<MenuMoudel> options, Context context) {
         mOptions = options;
         this.context = context;
+        setViewSelected(0,true);
     }
 
     @Override
@@ -41,7 +42,6 @@ public class DrawerMenuAdapter extends BaseAdapter {
         return mOptions.get(position);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @SuppressLint("ResourceAsColor")
     public void setViewSelected(int position, boolean selected) {
 
@@ -52,9 +52,10 @@ public class DrawerMenuAdapter extends BaseAdapter {
         for (int i = 0; i < mOptionViews.size(); i++) {
             if (i == position) {
                 mOptionViews.get(i).setSelected(selected);
-                mOptionViews.get(i).setBackgroundColor(context.getColor(R.color.soft_blue));
+
             } else {
                 mOptionViews.get(i).setSelected(!selected);
+
             }
         }
     }

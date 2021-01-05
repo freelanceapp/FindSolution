@@ -2,8 +2,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/soft_gray</item>
     </style>
 
     <style name="activation_code_et">
@@ -49,5 +50,24 @@
     <style name="dialog_congratulation_animation">
         <item name="android:windowEnterAnimation">@anim/dialog_congratulation_enter</item>
         <item name="android:windowExitAnimation">@anim/dialog_congratulation_exit</item>
+    </style>
+
+    <style name="item_rv_user_tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:drawablePadding">@dimen/_7sdp</item>
+        <item name="android:padding">@dimen/_5sdp</item>
+    </style>
+
+    <style name="tv_user_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/_5sdp</item>
+        <item name="android:drawablePadding">@dimen/_5sdp</item>
+        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>
