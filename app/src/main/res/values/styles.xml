@@ -70,4 +70,10 @@
         <item name="android:textSize">@dimen/medium_text</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="image_logo">
+        <item name="android:layout_width">@dimen/_80sdp</item>
+        <item name="android:layout_height">@dimen/_85sdp</item>
+        <item name="android:layout_marginTop">@dimen/_25sdp</item>
+    </style>
 </resources>

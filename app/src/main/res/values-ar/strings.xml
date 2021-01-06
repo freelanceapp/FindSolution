@@ -27,5 +27,17 @@
         <item name="about_app" type="string">حول التطبيق</item>
         <item name="Terms_and_Conditions" type="string">الشروط و الاحكام</item>
     </string-array>
+    <string name="sections">الأقسام</string>
+    <string name="personal_information">المعلومات الشخصية</string>
+    <string name="jop">العمل</string>
+    <string name="more_details">المزيد من التفاصيل</string>
+    <string name="location">الموقع</string>
+    <string name="phone_call">مكالمة هاتفية</string>
+    <string name="connect">"التواصل "</string>
+    <string name="whats_app">واتساب</string>
+    <string name="my_subscriptions">اشتراكي</string>
+    <string name="social_sites">مواقع التواصل</string>
+    <string name="message">Message</string>
+    <string name="subject">الموضوع</string>
 
 </resources>

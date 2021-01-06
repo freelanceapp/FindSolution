@@ -18,14 +18,27 @@
             android:layout_height="match_parent">
 
             <TextView
-                style="@style/tv_large_bold"
+                android:id="@+id/terms_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="term and conditions"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/large_text"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/medium_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo"
+                style="@style/image_logo"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

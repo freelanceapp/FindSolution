@@ -14,10 +14,7 @@
 
         <ImageView
             android:id="@+id/activity_login_iv_logo"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
-            android:layout_margin="40dp"
-            android:scaleType="fitXY"
+            style="@style/image_logo"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

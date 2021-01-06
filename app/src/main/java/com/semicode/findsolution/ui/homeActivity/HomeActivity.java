@@ -20,6 +20,7 @@ import com.semicode.findsolution.mvp.activtyHome.ActivityHomePresenter;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomeView;
 import com.semicode.findsolution.share.HelperMethod;
 import com.semicode.findsolution.ui.LoginActivity;
+import com.semicode.findsolution.ui.ProfileActivity;
 
 
 import java.util.ArrayList;
@@ -90,7 +91,8 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
 
             @Override
             public void onHeaderClicked() {
-
+                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                startActivity(intent);
 
             }
 

@@ -20,12 +20,22 @@
     <string name="sections">Sections</string>
     <string name="personal_information">personal information</string>
     <string name="jop">jop</string>
-    <string name="large_text">Visit our New Factory Branch: Second Kilometer on the International Coastal Visit our New Factory Branch: Second Kilometer on the International Coastal</string>
+    <string name="large_text" translatable="false">Visit our New Factory Branch: Second Kilometer on the International Coastal Visit our New Factory Branch: Second Kilometer on the International Coastal</string>
     <string name="more_details">More Details</string>
     <string name="location">location</string>
     <string name="whats_app">Whats App</string>
     <string name="phone_call">Phone Call</string>
-    <string name="connect">Connect</string>
+    <string name="connect">Communicate</string>
+    <string name="connect_us">Connect Us</string>
+    <string name="send">send</string>
+    <string name="email">Email</string>
+    <string name="subject">Subject</string>
+    <string name="message">Message</string>
+    <string name="social_sites">Social Sites</string>
+    <string name="my_subscriptions">my subscriptions</string>
+    <string name="remainder">Remainder</string>
+    <string name="month">Month</string>
+    <string name="day">Day</string>
 
     <string-array name="menuOptionsTittles">
     <item name="home" type="string">Home</item>

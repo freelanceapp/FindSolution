@@ -1,5 +1,6 @@
 package com.semicode.findsolution.ui.homeActivity.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.databinding.FragmentHomeBinding;
 import com.semicode.findsolution.databinding.FragmentMyAccountBinding;
+import com.semicode.findsolution.ui.ProfileActivity;
+import com.semicode.findsolution.ui.homeActivity.HomeActivity;
 
 
 public class MyAccountFragment extends Fragment {
@@ -35,6 +38,8 @@ public class MyAccountFragment extends Fragment {
     }
 
     private void initView() {
+        Intent intent = new Intent(getActivity(), ProfileActivity.class);
+        startActivity(intent);
 
     }
 }
