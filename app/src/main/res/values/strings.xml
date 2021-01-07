@@ -33,28 +33,24 @@
     <string name="message">Message</string>
     <string name="social_sites">Social Sites</string>
     <string name="my_subscriptions">my subscriptions</string>
-    <string name="remainder">Remainder</string>
+    <string name="remainder">Residual</string>
     <string name="month">Month</string>
     <string name="day">Day</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="change_language">Change Language</string>
 
     <string-array name="menuOptionsTittles">
     <item name="home" type="string">Home</item>
     <item name="my_account" type="string">My Account</item>
     <item name="Subscription" type="string">Subscription</item>
+    <item name="ChangeLanguage" type="string">ChangeLanguage</item>
     <item name="connect_us" type="string">Connect Us</item>
     <item name="about_app" type="string">About app</item>
     <item name="Terms_and_Conditions" type="string">Terms and Conditions</item>
     </string-array>
 
 
-    <string-array name="menuOptionsImages">
-        <item type="string">Home</item>
-        <item type="string">My Account</item>
-        <item type="string">Subscription</item>
-        <item type="string">Connect Us</item>
-        <item type="string">About app</item>
-        <item type="string">Terms and Conditions</item>
 
 
-    </string-array>
 </resources>

@@ -116,11 +116,16 @@
 
                 <Button
                     android:id="@+id/activity_confirmation_code_btn_confirm"
-                    style="@style/btn_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="40dp"
                     android:text="@string/next"
+                    app:backgroundTint="@color/colorAccent"
+                    app:cornerRadius="@dimen/_15sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_confirmation_code_pin_view" />
 
                 <TextView
                     android:id="@+id/activity_confirmation_code_tv_resend"

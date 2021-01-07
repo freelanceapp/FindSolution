@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.semicode.findsolution.databinding.ActivityUserDetailsBinding;
 
 
-public class UserDetailsActivity extends AppCompatActivity  {
+public class UserDetailsActivity extends AppCompatActivity {
     private ActivityUserDetailsBinding binding;
 
 
@@ -19,7 +19,7 @@ public class UserDetailsActivity extends AppCompatActivity  {
         binding = ActivityUserDetailsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
+        binding.userDetailsIvBack.setOnClickListener(v -> onBackPressed());
         intilView();
 
     }

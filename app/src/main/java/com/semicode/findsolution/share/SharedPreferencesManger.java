@@ -10,7 +10,7 @@ public class SharedPreferencesManger {
 
     public static SharedPreferences sharedPreferences = null;
     //    public static String API_TOKEN;
-    public final static String USER = "user", PASSWORD = "password", SPLASH = "splash";
+    public final static String USER = "user", PASSWORD = "password", SPLASH = "splash",LANGUAGE = "language";
 
     public static void setSharedPreferences(Activity activity) {
         if (sharedPreferences == null) {
@@ -52,7 +52,7 @@ public class SharedPreferencesManger {
         }
     }
 
-    public static String LoadData(Activity activity, String data_Key) {
+    public static String LoadData(Activity activity, String data_Key,String defValue) {
         setSharedPreferences(activity);
 
         return sharedPreferences.getString(data_Key, "");

@@ -25,8 +25,10 @@
         android:layout_weight="4"
         android:padding="@dimen/_5sdp"
         android:text="@string/logout"
-        android:background="@color/white"
         android:textColor="@color/black"
-        android:textSize="@dimen/large_text"
-        android:textStyle="bold" />
+        android:textSize="@dimen/medium_text"
+
+        android:textStyle="bold"
+        app:backgroundTint="@color/white"
+        />
 </LinearLayout>

@@ -18,7 +18,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
+        binding.profileIvMenu.setOnClickListener(v -> onBackPressed());
         intilView();
 
     }

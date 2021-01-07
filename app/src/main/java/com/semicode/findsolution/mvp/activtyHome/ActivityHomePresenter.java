@@ -1,16 +1,16 @@
 package com.semicode.findsolution.mvp.activtyHome;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.view.MenuItem;
+import android.content.Intent;
 
 import androidx.fragment.app.FragmentManager;
 
 import com.semicode.findsolution.R;
+import com.semicode.findsolution.ui.ProfileActivity;
 import com.semicode.findsolution.ui.homeActivity.fragment.AboutAppFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.ConnectUsFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.HomeFragment;
-import com.semicode.findsolution.ui.homeActivity.fragment.MyAccountFragment;
+import com.semicode.findsolution.ui.homeActivity.fragment.ChangeLanguageFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.SubscriptionFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.TermsAndConditionFragment;
 
@@ -24,7 +24,7 @@ public class ActivityHomePresenter {
     private AboutAppFragment aboutAppFragment;
     private ConnectUsFragment connectUsFragment;
     HomeFragment homeFragment;
-    private MyAccountFragment myAccountFragment;
+    private ChangeLanguageFragment changeLanguageFragment;
     private SubscriptionFragment subscriptionFragment;
     private TermsAndConditionFragment termsAndConditionFragment;
 
@@ -41,18 +41,21 @@ public class ActivityHomePresenter {
 
         switch (position) {
             case 1:
-                displayFragmentMyAccount();
+                openProfile();
                 break;
             case 2:
                 displayFragmentSubscription();
                 break;
             case 3:
-                displayFragmentConnectUs();
+                displayFragmentChangeLanguage();
                 break;
             case 4:
-                displayFragmentAboutApp();
+                displayFragmentConnectUs();
                 break;
             case 5:
+                displayFragmentAboutApp();
+                break;
+            case 6:
                 displayFragmentTermsAndCondition();
                 break;
 
@@ -60,6 +63,12 @@ public class ActivityHomePresenter {
                 displayFragmentHome();
                 break;
         }
+    }
+
+    public void openProfile() {
+        Intent intent = new Intent(context, ProfileActivity.class);
+        context.startActivity(intent);
+
     }
 
     private void displayFragmentHome() {
@@ -77,8 +86,8 @@ public class ActivityHomePresenter {
             fragmentManager.beginTransaction().hide(connectUsFragment).commit();
         }
 
-        if (myAccountFragment != null && myAccountFragment.isAdded()) {
-            fragmentManager.beginTransaction().hide(myAccountFragment).commit();
+        if (changeLanguageFragment != null && changeLanguageFragment.isAdded()) {
+            fragmentManager.beginTransaction().hide(changeLanguageFragment).commit();
         }
         if (subscriptionFragment != null && subscriptionFragment.isAdded()) {
             fragmentManager.beginTransaction().hide(subscriptionFragment).commit();
@@ -107,8 +116,8 @@ public class ActivityHomePresenter {
             fragmentManager.beginTransaction().hide(connectUsFragment).commit();
         }
 
-        if (myAccountFragment != null && myAccountFragment.isAdded()) {
-            fragmentManager.beginTransaction().hide(myAccountFragment).commit();
+        if (changeLanguageFragment != null && changeLanguageFragment.isAdded()) {
+            fragmentManager.beginTransaction().hide(changeLanguageFragment).commit();
         }
         if (subscriptionFragment != null && subscriptionFragment.isAdded()) {
             fragmentManager.beginTransaction().hide(subscriptionFragment).commit();
@@ -137,8 +146,8 @@ public class ActivityHomePresenter {
             fragmentManager.beginTransaction().hide(homeFragment).commit();
         }
 
-        if (myAccountFragment != null && myAccountFragment.isAdded()) {
-            fragmentManager.beginTransaction().hide(myAccountFragment).commit();
+        if (changeLanguageFragment != null && changeLanguageFragment.isAdded()) {
+            fragmentManager.beginTransaction().hide(changeLanguageFragment).commit();
         }
         if (subscriptionFragment != null && subscriptionFragment.isAdded()) {
             fragmentManager.beginTransaction().hide(subscriptionFragment).commit();
@@ -154,9 +163,9 @@ public class ActivityHomePresenter {
         }
     }
 
-    private void displayFragmentMyAccount() {
-        if (myAccountFragment == null) {
-            myAccountFragment = MyAccountFragment.newInstance();
+    private void displayFragmentChangeLanguage() {
+        if (changeLanguageFragment == null) {
+            changeLanguageFragment = ChangeLanguageFragment.newInstance();
         }
 
         if (aboutAppFragment != null && aboutAppFragment.isAdded()) {
@@ -177,10 +186,10 @@ public class ActivityHomePresenter {
             fragmentManager.beginTransaction().hide(termsAndConditionFragment).commit();
         }
 
-        if (myAccountFragment.isAdded()) {
-            fragmentManager.beginTransaction().show(myAccountFragment).commit();
+        if (changeLanguageFragment.isAdded()) {
+            fragmentManager.beginTransaction().show(changeLanguageFragment).commit();
         } else {
-            fragmentManager.beginTransaction().add(R.id.activity_home_container, myAccountFragment, "My Account").commit();
+            fragmentManager.beginTransaction().add(R.id.activity_home_container, changeLanguageFragment, "My Account").commit();
         }
     }
 
@@ -197,8 +206,8 @@ public class ActivityHomePresenter {
             fragmentManager.beginTransaction().hide(connectUsFragment).commit();
         }
 
-        if (myAccountFragment != null && myAccountFragment.isAdded()) {
-            fragmentManager.beginTransaction().hide(myAccountFragment).commit();
+        if (changeLanguageFragment != null && changeLanguageFragment.isAdded()) {
+            fragmentManager.beginTransaction().hide(changeLanguageFragment).commit();
         }
         if (subscriptionFragment != null && subscriptionFragment.isAdded()) {
             fragmentManager.beginTransaction().hide(subscriptionFragment).commit();
@@ -227,8 +236,8 @@ public class ActivityHomePresenter {
             fragmentManager.beginTransaction().hide(connectUsFragment).commit();
         }
 
-        if (myAccountFragment != null && myAccountFragment.isAdded()) {
-            fragmentManager.beginTransaction().hide(myAccountFragment).commit();
+        if (changeLanguageFragment != null && changeLanguageFragment.isAdded()) {
+            fragmentManager.beginTransaction().hide(changeLanguageFragment).commit();
         }
         if (subscriptionFragment != null && subscriptionFragment.isAdded()) {
             fragmentManager.beginTransaction().hide(subscriptionFragment).commit();

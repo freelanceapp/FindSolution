@@ -67,6 +67,8 @@ public class SectionActivity extends AppCompatActivity implements SectionFilterA
         userList.add(new UserModel("ali", "lowyer", "tanta", "office"));
         userList.add(new UserModel("ali", "lowyer", "tanta", "office"));
         userList.add(new UserModel("ali", "lowyer", "tanta", "office"));
+        userList.add(new UserModel("ali", "lowyer", "tanta", "office"));
+        userList.add(new UserModel("ali", "lowyer", "tanta", "office"));
     }
 
     @Override

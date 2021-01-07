@@ -37,7 +37,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_image" />
+                app:srcCompat="@drawable/image" />
 
             <TextView
                 android:id="@+id/user_details_tv_name"
@@ -63,10 +63,7 @@
 
             <TextView
                 android:id="@+id/user_details_tv_Person_details"
-                style="@style/tv_large_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                style="@style/profile_tittles"
                 android:text="@string/personal_information"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.096"
@@ -130,9 +127,7 @@
 
             <TextView
                 android:id="@+id/textView5"
-                style="@style/tv_large_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/profile_tittles"
                 android:text="@string/location"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.093"
@@ -175,10 +170,8 @@
 
             <TextView
                 android:id="@+id/textView11"
-                style="@style/tv_large_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/connect"
+                style="@style/profile_tittles"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.093"
                 app:layout_constraintStart_toStartOf="parent"
@@ -208,6 +201,7 @@
                         android:background="#E8FFE9"
                         android:gravity="center_vertical"
                         android:padding="@dimen/_10sdp"
+                        android:drawablePadding="@dimen/_8sdp"
                         android:text="@string/whats_app"
                         android:textColor="@color/black"
                         android:textSize="@dimen/medium_text"
@@ -227,6 +221,8 @@
                         android:background="#C9E7FF"
                         android:gravity="center_vertical"
                         android:padding="@dimen/_10sdp"
+                        android:drawablePadding="@dimen/_8sdp"
+
                         android:text="@string/phone_call"
                         android:textColor="@color/black"
                         android:textSize="@dimen/medium_text"
@@ -237,10 +233,10 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_margin="@dimen/_15sdp"
+                android:id="@+id/user_details_iv_back"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/circle_background_blue"
                 android:padding="@dimen/_7sdp"
                 app:layout_constraintStart_toStartOf="parent"

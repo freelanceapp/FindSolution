@@ -23,6 +23,7 @@
         <item name="home" type="string">Home</item>
         <item name="my_account" type="string">حسابي</item>
         <item name="Subscription" type="string">الاشتراكات</item>
+        <item name="ChangeLanguage" type="string">تغيير اللغة</item>
         <item name="connect_us" type="string">اتصل بنا</item>
         <item name="about_app" type="string">حول التطبيق</item>
         <item name="Terms_and_Conditions" type="string">الشروط و الاحكام</item>
@@ -39,5 +40,14 @@
     <string name="social_sites">مواقع التواصل</string>
     <string name="message">Message</string>
     <string name="subject">الموضوع</string>
+    <string name="connect_us">اتصل بنا</string>
+    <string name="send">إرسال</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="remainder">"المتبقي "</string>
+    <string name="month">Month</string>
+    <string name="day">يوم</string>
+    <string name="english">الإنجليزية</string>
+    <string name="arabic">عربى</string>
+    <string name="change_language">تغيير اللغة</string>
 
 </resources>

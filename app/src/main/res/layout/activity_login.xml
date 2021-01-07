@@ -127,7 +127,11 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    style="@style/btn_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    app:backgroundTint="@color/colorAccent"
+                    app:cornerRadius="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

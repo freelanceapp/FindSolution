@@ -1,9 +1,13 @@
 package com.semicode.findsolution.ui.homeActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
@@ -13,12 +17,14 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.semicode.findsolution.R;
-import com.semicode.findsolution.adapter.DrawerMenuAdapter;
+import com.semicode.findsolution.adapter.menuDrawer.DrawerMenuAdapter;
 import com.semicode.findsolution.databinding.ActivityHomeBinding;
-import com.semicode.findsolution.model.MenuMoudel;
+import com.semicode.findsolution.language.Language;
+import com.semicode.findsolution.model.MenuModel;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomePresenter;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomeView;
 import com.semicode.findsolution.share.HelperMethod;
+import com.semicode.findsolution.share.SharedPreferencesManger;
 import com.semicode.findsolution.ui.LoginActivity;
 import com.semicode.findsolution.ui.ProfileActivity;
 
@@ -28,17 +34,21 @@ import java.util.ArrayList;
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
 
+import static com.semicode.findsolution.share.SharedPreferencesManger.setSharedPreferences;
+
 
 public class HomeActivity extends AppCompatActivity implements ActivityHomeView {
     private ActivityHomeBinding binding;
     private FirebaseAuth mAuth;
     DuoDrawerToggle drawerToggle;
-    private ArrayList<MenuMoudel> mOptions;
+    private ArrayList<MenuModel> mOptions;
     private String[] tittle;
     private int[] images;
+    private int[] imagesSelected;
     FragmentManager fragmentManager;
     ActivityHomePresenter presenter;
     DrawerMenuAdapter menuAdapter;
+    String lang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,34 +59,26 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
         initView();
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+    }
+
     @SuppressLint({"ResourceAsColor", "UseCompatLoadingForDrawables"})
     private void initView() {
+        setSharedPreferences(this);
+        lang = SharedPreferencesManger.LoadData(this, SharedPreferencesManger.LANGUAGE, "ar");
         mAuth = FirebaseAuth.getInstance();
         fragmentManager = getSupportFragmentManager();
         presenter = new ActivityHomePresenter(this, this, fragmentManager);
 
-//        get menu resources
-        tittle = getResources().getStringArray(R.array.menuOptionsTittles);
-        images = new int[]{R.drawable.ic_menu_home
-                , R.drawable.ic_menu_my_account
-                , R.drawable.ic_menu_subscrpyion
-                , R.drawable.ic_menu_connect_us
-                , R.drawable.ic_menu_about_app
-                , R.drawable.ic_menu_terms};
-
-        mOptions = new ArrayList<MenuMoudel>();
-        for (int i = 0; i < tittle.length; i++) {
-            mOptions.add(new MenuMoudel(tittle[i], getDrawable(images[i])));
-
-        }
+        getMenuData();
 
 
         drawerToggle = new DuoDrawerToggle(this, binding.activityHomeDrawer, binding.activityHomeToolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
-
         binding.activityHomeDrawer.setDrawerListener(drawerToggle);
-
         drawerToggle.syncState();
 
         menuAdapter = new DrawerMenuAdapter(mOptions, this);
@@ -91,8 +93,7 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
 
             @Override
             public void onHeaderClicked() {
-                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
-                startActivity(intent);
+                presenter.openProfile();
 
             }
 
@@ -107,10 +108,48 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
         });
     }
 
+    private void getMenuData() {
+//        get menu resources
+        tittle = getResources().getStringArray(R.array.menuOptionsTittles);
+        images = new int[]{R.drawable.ic_menu_home_gray
+                , R.drawable.ic_menu_my_account_gray
+                , R.drawable.ic_menu_subscrpyion_gray
+                , R.drawable.ic_menu_translate_gray
+                , R.drawable.ic_menu_connect_us_gray
+                , R.drawable.ic_menu_about_app_gray
+                , R.drawable.ic_menu_terms_gray};
+        imagesSelected = new int[]{R.drawable.ic_menu_home
+                , R.drawable.ic_menu_my_account
+                , R.drawable.ic_menu_subscrpyion
+                , R.drawable.ic_menu_translate
+                , R.drawable.ic_menu_connect_us
+                , R.drawable.ic_menu_about_app
+                , R.drawable.ic_menu_terms};
+
+        mOptions = new ArrayList<MenuModel>();
+        for (int i = 0; i < tittle.length; i++) {
+            mOptions.add(new MenuModel(tittle[i], getDrawable(images[i]), getDrawable(imagesSelected[i])));
+
+        }
+    }
+
     private void logout() {
         mAuth.signOut();
         HelperMethod.makeTextToast(getApplicationContext(), "logout");
         startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+    }
+
+    public void refreshActivity(String lang) {
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            SharedPreferencesManger.SaveData(this, SharedPreferencesManger.LANGUAGE, lang);
+//            Language.updateResources(this, lang);
+            HelperMethod.changeLang(this,lang);
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }, 1500);
+
+
     }
 
     @Override
