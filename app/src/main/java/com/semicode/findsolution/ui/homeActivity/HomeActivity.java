@@ -19,11 +19,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.adapter.menuDrawer.DrawerMenuAdapter;
 import com.semicode.findsolution.databinding.ActivityHomeBinding;
-import com.semicode.findsolution.language.Language;
 import com.semicode.findsolution.model.MenuModel;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomePresenter;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomeView;
 import com.semicode.findsolution.share.HelperMethod;
+import com.semicode.findsolution.share.Language;
 import com.semicode.findsolution.share.SharedPreferencesManger;
 import com.semicode.findsolution.ui.LoginActivity;
 import com.semicode.findsolution.ui.ProfileActivity;
@@ -61,13 +61,14 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
+//        lang = SharedPreferencesManger.LoadData(this, SharedPreferencesManger.LANGUAGE, "ar");
+        lang ="en";
+        super.attachBaseContext(Language.updateResources(newBase,lang));
     }
 
     @SuppressLint({"ResourceAsColor", "UseCompatLoadingForDrawables"})
     private void initView() {
         setSharedPreferences(this);
-        lang = SharedPreferencesManger.LoadData(this, SharedPreferencesManger.LANGUAGE, "ar");
         mAuth = FirebaseAuth.getInstance();
         fragmentManager = getSupportFragmentManager();
         presenter = new ActivityHomePresenter(this, this, fragmentManager);

@@ -200,7 +200,6 @@
                         android:layout_height="match_parent"
                         android:background="#E8FFE9"
                         android:gravity="center_vertical"
-                        android:padding="@dimen/_10sdp"
                         android:drawablePadding="@dimen/_8sdp"
                         android:text="@string/whats_app"
                         android:textColor="@color/black"
@@ -220,7 +219,6 @@
                         android:layout_height="match_parent"
                         android:background="#C9E7FF"
                         android:gravity="center_vertical"
-                        android:padding="@dimen/_10sdp"
                         android:drawablePadding="@dimen/_8sdp"
 
                         android:text="@string/phone_call"

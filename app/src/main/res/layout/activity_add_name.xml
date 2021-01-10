@@ -65,7 +65,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_view"
-                    style="@style/strok_edittext"
+                    style="@style/out_line_et"
                     android:hint="@string/name"
                     app:layout_constraintBottom_toTopOf="@+id/activity_add_name_btn_confirm"
                     app:layout_constraintEnd_toEndOf="parent"

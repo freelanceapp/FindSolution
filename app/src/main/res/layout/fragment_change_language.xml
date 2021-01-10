@@ -78,11 +78,13 @@
                         android:id="@+id/tv_english"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/gray"
                         android:drawablePadding="@dimen/_10sdp"
                         android:gravity="center"
+                        android:paddingStart="@dimen/_20sdp"
+                        android:paddingEnd="@dimen/_20sdp"
                         android:text="@string/english"
-                        android:textSize="30sp" />
+                        android:textSize="30sp"
+                        app:drawableStartCompat="@drawable/ic_back" />
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 

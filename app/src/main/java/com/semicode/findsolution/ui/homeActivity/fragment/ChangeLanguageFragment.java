@@ -1,7 +1,9 @@
 package com.semicode.findsolution.ui.homeActivity.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +21,14 @@ import com.semicode.findsolution.share.SharedPreferencesManger;
 import com.semicode.findsolution.ui.ProfileActivity;
 import com.semicode.findsolution.ui.homeActivity.HomeActivity;
 
+import java.util.Objects;
+
 
 public class ChangeLanguageFragment extends Fragment implements View.OnClickListener {
 
     FragmentChangeLanguageBinding binding;
     HomeActivity activity;
+    Drawable img;
     String lang;
 
     public static ChangeLanguageFragment newInstance() {
@@ -32,10 +37,6 @@ public class ChangeLanguageFragment extends Fragment implements View.OnClickList
         return fragment;
     }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,28 +45,32 @@ public class ChangeLanguageFragment extends Fragment implements View.OnClickList
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_change_language, container, false);
         initView();
-
+        lang = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.LANGUAGE, "");
+        setSelectedButton(lang);
 
         return binding.getRoot();
     }
 
-    private void setSelectedButton(View view) {
-        switch (view.getId()) {
-            case R.id.tv_arabic:
-                binding.tvArabic.setBackgroundResource(R.color.white);
-                binding.tvEnglish.setBackgroundResource(R.color.gray);
 
-                break;
-            case R.id.tv_english:
-                binding.tvEnglish.setBackgroundResource(R.color.white);
-                binding.tvArabic.setBackgroundResource(R.color.gray);
-                break;
+    private void setSelectedButton(String language) {
+        if (language == "ar") {
+            binding.tvArabic.setCompoundDrawablesRelative(img, null, null, null);
+            binding.tvEnglish.setCompoundDrawablesRelative(null, null, null, null);
+        } else if (language == "en") {
+            binding.tvEnglish.setCompoundDrawablesRelative(null, null, null, null);
+
+            binding.tvArabic.setCompoundDrawablesRelative(img, null, null, null);
+
         }
+
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void initView() {
+        img = requireActivity().getDrawable(R.drawable.ic_back);
+        img.setBounds(0, 0, 60, 60);
         activity = (HomeActivity) getActivity();
-        lang = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.LANGUAGE,"ar");
+        lang = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.LANGUAGE, "ar");
         binding.tvArabic.setOnClickListener(this);
         binding.tvEnglish.setOnClickListener(this);
 
@@ -74,15 +79,16 @@ public class ChangeLanguageFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        setSelectedButton(v);
         switch (v.getId()) {
             case R.id.tv_arabic:
-//                SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.LANGUAGE, "ar");
+                setSelectedButton("ar");
+                SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.LANGUAGE, "ar");
                 activity.refreshActivity("ar");
 
 
                 break;
             case R.id.tv_english:
+                setSelectedButton("en");
                 SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.LANGUAGE, "en");
                 activity.refreshActivity("en");
 

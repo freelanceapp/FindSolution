@@ -51,6 +51,7 @@ public class ConfirmationCodeActivity extends AppCompatActivity implements Activ
 
     }
 
+
     private void intiView() {
         String mPhone = phone_code + phoneNumber;
         binding.activityConfirmationCodeTvNumber.setText(mPhone);

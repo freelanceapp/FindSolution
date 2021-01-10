@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.databinding.ActivityAddNameBinding;
 import com.semicode.findsolution.share.HelperMethod;
+import com.semicode.findsolution.share.SharedPreferencesManger;
 import com.semicode.findsolution.ui.homeActivity.HomeActivity;
 
 
@@ -33,7 +34,8 @@ public class AddNameActivity extends AppCompatActivity implements View.OnClickLi
         binding = ActivityAddNameBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
+        SharedPreferencesManger.setSharedPreferences(this);
+        SharedPreferencesManger.SaveData(this,SharedPreferencesManger.LANGUAGE,"ar");
         binding.activityAddNameBtnConfirm.setOnClickListener(this);
     }
 
@@ -48,7 +50,6 @@ public class AddNameActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_add_name_btn_confirm:
-                Toast.makeText(this, "done", Toast.LENGTH_SHORT).show();
                 String name = "mo";
 //                binding.activityAddNameEtName.getText().toString();
                 if (TextUtils.isEmpty(name)) {

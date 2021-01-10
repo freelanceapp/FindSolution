@@ -2,9 +2,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/soft_gray</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/soft_gray</item>
     </style>
 
     <style name="activation_code_et">
@@ -67,11 +66,12 @@
         <item name="android:layout_marginTop">@dimen/_25sdp</item>
     </style>
 
-    <style name="strok_edittext">
-        <item name="android:layout_width">0dp</item>
+    <style name="out_line_et">
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_50sdp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_margin">@dimen/_5sdp</item>
+        <item name="android:layout_marginStart">@dimen/_10sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_10sdp</item>
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxBackgroundMode">outline</item>
         <item name="boxStrokeColor">@color/colorAccent</item>
@@ -79,7 +79,34 @@
         <item name="boxStrokeWidthFocused">1dp</item>
         <item name="hintAnimationEnabled">true</item>
         <item name="hintEnabled">true</item>
-        <item name="hintTextColor">@color/gray</item>
+        <item name="android:state_focused">true</item>
+        <item name="hintTextAppearance">@android:style/TextAppearance.DeviceDefault.Medium</item>
+        <item name="hintTextColor">@color/color_edittext</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/_4sdp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_4sdp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_4sdp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/_4sdp</item>
+        <item name="theme">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+    </style>
+<style name="out_line_et_no_hint_gray">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_50sdp</item>
+        <item name="android:layout_marginStart">@dimen/_10sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_10sdp</item>
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxStrokeColor">@color/gray</item>
+        <item name="boxStrokeWidth">1px</item>
+    <item name="hintAnimationEnabled">false</item>
+    <item name="hintEnabled">false</item>
+
+    <item name="hintTextAppearance">@android:style/TextAppearance.DeviceDefault.Medium</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/_4sdp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_4sdp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_4sdp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/_4sdp</item>
+        <item name="theme">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
     </style>
 
     <style name="profile_tittles">

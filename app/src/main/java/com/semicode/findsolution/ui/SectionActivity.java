@@ -1,5 +1,6 @@
 package com.semicode.findsolution.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,18 +14,21 @@ import com.semicode.findsolution.databinding.ActivitySectionBinding;
 import com.semicode.findsolution.model.SectionModel;
 import com.semicode.findsolution.model.UserModel;
 import com.semicode.findsolution.share.HelperMethod;
+import com.semicode.findsolution.share.Language;
+import com.semicode.findsolution.share.SharedPreferencesManger;
 import com.semicode.findsolution.ui.homeActivity.HomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class SectionActivity extends AppCompatActivity implements SectionFilterAdapter.OnKindClick , UserAdapter.OnUserClick{
+public class SectionActivity extends AppCompatActivity implements SectionFilterAdapter.OnKindClick, UserAdapter.OnUserClick {
     private ActivitySectionBinding binding;
     private SectionFilterAdapter kindAdapter;
     private UserAdapter userAdapter;
     private List<SectionModel> kindList = new ArrayList<>();
     private List<UserModel> userList = new ArrayList<>();
+    private String lang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +40,18 @@ public class SectionActivity extends AppCompatActivity implements SectionFilterA
         intilView();
 
     }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        lang = SharedPreferencesManger.LoadData(this, SharedPreferencesManger.LANGUAGE, "ar");
+        super.attachBaseContext(Language.updateResources(newBase,lang));
+    }
 
     private void intilView() {
         binding.activitySectonToolbar.setCollapseIcon(getDrawable(R.drawable.ic_edit));
         getKindData();
         getUserData();
         kindAdapter = new SectionFilterAdapter(this, kindList, this);
-        userAdapter = new UserAdapter(this, userList,this);
+        userAdapter = new UserAdapter(this, userList, this);
         binding.recyclerViewTop.setAdapter(kindAdapter);
         binding.recyclerViewBottom.setAdapter(userAdapter);
         binding.activitySectonToolbar.setNavigationIcon(R.drawable.ic_back);
@@ -86,7 +95,7 @@ public class SectionActivity extends AppCompatActivity implements SectionFilterA
 
     @Override
     public void onItemUserClick(int position) {
-        startActivity(new Intent(this,UserDetailsActivity.class));
+        startActivity(new Intent(this, UserDetailsActivity.class));
 
     }
 }
