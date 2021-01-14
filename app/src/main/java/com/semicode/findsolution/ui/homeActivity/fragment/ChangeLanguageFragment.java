@@ -28,7 +28,6 @@ public class ChangeLanguageFragment extends Fragment implements View.OnClickList
 
     FragmentChangeLanguageBinding binding;
     HomeActivity activity;
-    Drawable img;
     String lang;
 
     public static ChangeLanguageFragment newInstance() {
@@ -45,21 +44,17 @@ public class ChangeLanguageFragment extends Fragment implements View.OnClickList
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_change_language, container, false);
         initView();
-        lang = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.LANGUAGE, "");
-        setSelectedButton(lang);
 
         return binding.getRoot();
     }
 
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void setSelectedButton(String language) {
-        if (language == "ar") {
-            binding.tvArabic.setCompoundDrawablesRelative(img, null, null, null);
-            binding.tvEnglish.setCompoundDrawablesRelative(null, null, null, null);
-        } else if (language == "en") {
-            binding.tvEnglish.setCompoundDrawablesRelative(null, null, null, null);
-
-            binding.tvArabic.setCompoundDrawablesRelative(img, null, null, null);
+        if (language.equals("en")) {
+            binding.changeLangTv.setCompoundDrawablesRelativeWithIntrinsicBounds(getActivity().getDrawable(R.drawable.ic_saudi_arabia), null, null, null);
+        } else if (language.equals("ar")) {
+            binding.changeLangTv.setCompoundDrawablesRelativeWithIntrinsicBounds(getActivity().getDrawable(R.drawable.ic_english), null, null, null);
 
         }
 
@@ -67,12 +62,11 @@ public class ChangeLanguageFragment extends Fragment implements View.OnClickList
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void initView() {
-        img = requireActivity().getDrawable(R.drawable.ic_back);
-        img.setBounds(0, 0, 60, 60);
+
         activity = (HomeActivity) getActivity();
         lang = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.LANGUAGE, "ar");
-        binding.tvArabic.setOnClickListener(this);
-        binding.tvEnglish.setOnClickListener(this);
+        setSelectedButton(lang);
+        binding.changeLangTv.setOnClickListener(this);
 
 
     }
@@ -80,17 +74,17 @@ public class ChangeLanguageFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_arabic:
-                setSelectedButton("ar");
-                SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.LANGUAGE, "ar");
-                activity.refreshActivity("ar");
+            case R.id.change_lang_tv:
+                if (lang.equals("ar")) {
+                    setSelectedButton("en");
+                    SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.LANGUAGE, "en");
+                    activity.refreshActivity("en");
+                } else {
+                    setSelectedButton("ar");
+                    SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.LANGUAGE, "ar");
+                    activity.refreshActivity("ar");
+                }
 
-
-                break;
-            case R.id.tv_english:
-                setSelectedButton("en");
-                SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.LANGUAGE, "en");
-                activity.refreshActivity("en");
 
                 break;
         }

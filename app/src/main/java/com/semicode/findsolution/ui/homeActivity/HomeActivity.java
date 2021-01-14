@@ -1,7 +1,6 @@
 package com.semicode.findsolution.ui.homeActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -18,18 +17,19 @@ import androidx.fragment.app.FragmentManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.adapter.menuDrawer.DrawerMenuAdapter;
+import com.semicode.findsolution.data.model.categories.CategoryDate;
 import com.semicode.findsolution.databinding.ActivityHomeBinding;
-import com.semicode.findsolution.model.MenuModel;
+import com.semicode.findsolution.data.model.MenuModel;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomePresenter;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomeView;
 import com.semicode.findsolution.share.HelperMethod;
 import com.semicode.findsolution.share.Language;
 import com.semicode.findsolution.share.SharedPreferencesManger;
 import com.semicode.findsolution.ui.LoginActivity;
-import com.semicode.findsolution.ui.ProfileActivity;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
@@ -56,13 +56,16 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+
+
         initView();
     }
 
     @Override
     protected void attachBaseContext(Context newBase) {
-//        lang = SharedPreferencesManger.LoadData(this, SharedPreferencesManger.LANGUAGE, "ar");
-        lang ="en";
+//        lang ="en";
+        lang =SharedPreferencesManger.LoadData(this,SharedPreferencesManger.LANGUAGE,"ar");
         super.attachBaseContext(Language.updateResources(newBase,lang));
     }
 
@@ -74,8 +77,6 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
         presenter = new ActivityHomePresenter(this, this, fragmentManager);
 
         getMenuData();
-
-
         drawerToggle = new DuoDrawerToggle(this, binding.activityHomeDrawer, binding.activityHomeToolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
@@ -85,7 +86,6 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
         menuAdapter = new DrawerMenuAdapter(mOptions, this);
 
         binding.activityHomeMenu.setAdapter(menuAdapter);
-
         binding.activityHomeMenu.setOnMenuClickListener(new DuoMenuView.OnMenuClickListener() {
             @Override
             public void onFooterClicked() {
@@ -167,4 +167,8 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
     public void onHomeFragmentSelected() {
 
     }
+
+
+
+
 }

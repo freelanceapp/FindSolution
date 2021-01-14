@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.semicode.findsolution.model.MenuModel;
+import com.semicode.findsolution.data.model.MenuModel;
 
 import java.util.ArrayList;
 

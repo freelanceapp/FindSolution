@@ -5,12 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +18,7 @@ import com.semicode.findsolution.mvp.activtyConfirmationCode.ActivityConfirmatio
 import com.semicode.findsolution.mvp.activtyConfirmationCode.ActivityConfirmationCodeView;
 import com.semicode.findsolution.share.Common;
 import com.semicode.findsolution.share.HelperMethod;
+import com.semicode.findsolution.share.SharedPreferencesManger;
 
 import java.util.Locale;
 
@@ -84,15 +82,7 @@ public class ConfirmationCodeActivity extends AppCompatActivity implements Activ
         }
     }
 
-    private void addUserToDataBse(String id) {
-        mRef.child(id).setValue("").addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                HelperMethod.makeTextToast(getApplicationContext(), "user is add ");
 
-            }
-        });
-    }
 
     @Override
     public void onCounterStarted(String time) {
@@ -117,8 +107,10 @@ public class ConfirmationCodeActivity extends AppCompatActivity implements Activ
     @Override
     public void onLogin() {
         HelperMethod.makeTextToast(getApplicationContext(), "done Login");
-        addUserToDataBse(mAuth.getCurrentUser().getUid());
-        Intent intent = new Intent(ConfirmationCodeActivity.this,AddNameActivity.class);
+        SharedPreferencesManger.SaveData(this,SharedPreferencesManger.ISLOGIN,true);
+        Intent intent = new Intent(ConfirmationCodeActivity.this, SignUpActivity.class);
+        intent.putExtra("PHONE_CODE", phone_code);
+        intent.putExtra("PHONE_NUMBER", phoneNumber);
         startActivity(intent);
     }
 

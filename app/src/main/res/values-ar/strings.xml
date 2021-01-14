@@ -56,5 +56,7 @@
     <string name="jop_kind">نوع العمل</string>
     <string name="more_details_optional">مزيد من التفاصيل (اختياري)</string>
     <string name="addess">مصر القاهرة</string>
+    <string name="complete_the_data_to_register">أكمل البيانات للتسجيل</string>
+    <string name="change_language_text">Change to English</string>
 
 </resources>

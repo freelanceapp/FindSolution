@@ -28,6 +28,9 @@ import com.semicode.findsolution.databinding.DialogAlertBinding;
 
 import java.io.File;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 
 public class Common {
@@ -47,7 +50,13 @@ public class Common {
         dialog.setView(binding.getRoot());
         dialog.show();
     }
+    public static MultipartBody.Part getMultiPart(Context context, Uri uri, String partName) {
+        File file = getFileFromImagePath(getImagePath(context, uri));
+        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
+        MultipartBody.Part part = MultipartBody.Part.createFormData(partName, file.getName(), requestBody);
+        return part;
 
+    }
     public static void CloseKeyBoard(Context context, View view) {
         if (context != null && view != null) {
             InputMethodManager manager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -200,8 +209,8 @@ public class Common {
     }
 
     private static File getFileFromImagePath(String path) {
-        File file = new File(path);
-        return file;
+
+        return new File(path);
     }
 
 //    public static MultipartBody.Part getMultiPart(Context context, Uri uri, String partName) {
@@ -211,15 +220,18 @@ public class Common {
 //        return part;
 //
 //    }
-//
-//    public static MultipartBody.Part getMultiPartImage(Context context, Uri uri, String partName) {
-//        File file = getFileFromImagePath(getImagePath(context, uri));
-//        String name = System.currentTimeMillis()+file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf("."));
-//        RequestBody requestBody = getRequestBodyImage(file);
-//        MultipartBody.Part part = MultipartBody.Part.createFormData(partName, name, requestBody);
-//        return part;
-//
-//    }
+//   012 2197 2006
+//    012 219 720 06
+
+
+    public static MultipartBody.Part getMultiPartImage(Context context, Uri uri, String partName) {
+        File file = getFileFromImagePath(getImagePath(context, uri));
+        String name = System.currentTimeMillis()+file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf("."));
+        RequestBody requestBody = getRequestBodyImage(file);
+        MultipartBody.Part part = MultipartBody.Part.createFormData(partName, name, requestBody);
+        return part;
+
+    }
 //
 //    public static MultipartBody.Part getMultiPartAudio(Context context, String audio_path, String partName) {
 //        File file = new File(audio_path);
@@ -239,25 +251,25 @@ public class Common {
 //
 //    }
 //
-//    private static RequestBody getRequestBodyImage(File file) {
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-//        return requestBody;
-//    }
-//
-//    public static RequestBody getRequestBodyText(String data) {
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain"), data);
-//        return requestBody;
-//    }
-//
-//    private static RequestBody getRequestBodyAudio(File file) {
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("audio/*"), file);
-//        return requestBody;
-//    }
-//
-//    private static RequestBody getRequestBodyVideo(File file) {
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("video/*"), file);
-//        return requestBody;
-//    }
+    private static RequestBody getRequestBodyImage(File file) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
+        return requestBody;
+    }
+
+    public static RequestBody getRequestBodyText(String data) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain"), data);
+        return requestBody;
+    }
+
+    private static RequestBody getRequestBodyAudio(File file) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse("audio/*"), file);
+        return requestBody;
+    }
+
+    private static RequestBody getRequestBodyVideo(File file) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse("video/*"), file);
+        return requestBody;
+    }
 
     public static ProgressDialog createProgressDialog(Context context, String msg) {
         ProgressDialog dialog = new ProgressDialog(context);

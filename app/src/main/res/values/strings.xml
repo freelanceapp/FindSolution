@@ -47,7 +47,7 @@
     <string name="whats_app_number" translatable="false">whats app number</string>
     <string name="addess">egypt_cairo</string>
     <string name="you_must_subscribe_to_a_package">You must subscribe to a package to be able to add your services</string>
-    <string name="complete_the_data_to_register">Complete the data to register</string>
+    <string name="complete_the_data_to_register">Complete the userData to register</string>
 
     <string-array name="menuOptionsTittles">
     <item name="home" type="string">Home</item>
@@ -58,8 +58,13 @@
     <item name="about_app" type="string">About app</item>
     <item name="Terms_and_Conditions" type="string">Terms and Conditions</item>
     </string-array>
-
-
+    <string name="change_language_text">تغيير إلى العربية</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="camera">camera</string>
+    <string name="gallery">gallery</string>
+    <string name="cancel">cancel</string>
+    <string name="perm_image_denied">permission denied</string>
+    <string name="subscribe">Subscribe</string>
 
 
 </resources>

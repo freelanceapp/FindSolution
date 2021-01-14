@@ -6,6 +6,9 @@ import android.content.Intent;
 import androidx.fragment.app.FragmentManager;
 
 import com.semicode.findsolution.R;
+import com.semicode.findsolution.data.api.Api;
+import com.semicode.findsolution.data.model.categories.Category;
+import com.semicode.findsolution.tags.Tags;
 import com.semicode.findsolution.ui.ProfileActivity;
 import com.semicode.findsolution.ui.homeActivity.fragment.AboutAppFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.ConnectUsFragment;
@@ -13,6 +16,10 @@ import com.semicode.findsolution.ui.homeActivity.fragment.HomeFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.ChangeLanguageFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.SubscriptionFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.TermsAndConditionFragment;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ActivityHomePresenter {
 
@@ -35,7 +42,10 @@ public class ActivityHomePresenter {
         this.view = view;
 
         displayFragmentHome();
+
     }
+
+
 
     public void displayFragments(int position) {
 
@@ -214,6 +224,9 @@ public class ActivityHomePresenter {
         }
         if (termsAndConditionFragment != null && termsAndConditionFragment.isAdded()) {
             fragmentManager.beginTransaction().hide(termsAndConditionFragment).commit();
+        }
+        if (homeFragment != null && homeFragment.isAdded()) {
+            fragmentManager.beginTransaction().hide(homeFragment).commit();
         }
 
         if (subscriptionFragment.isAdded()) {

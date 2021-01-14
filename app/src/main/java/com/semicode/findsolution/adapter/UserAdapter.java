@@ -5,14 +5,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.semicode.findsolution.R;
-import com.semicode.findsolution.model.UserModel;
+import com.semicode.findsolution.data.model.UserModel;
 
 import java.util.List;
 

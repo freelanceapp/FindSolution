@@ -1,4 +1,4 @@
-package com.semicode.findsolution.model;
+package com.semicode.findsolution.data.model;
 
 import android.graphics.drawable.Drawable;
 

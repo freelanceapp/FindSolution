@@ -28,6 +28,7 @@
                 android:text="@string/you_must_subscribe_to_a_package"
                 android:textSize="@dimen/medium_text" />
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sub_rv_package"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 />

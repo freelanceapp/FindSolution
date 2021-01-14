@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.semicode.findsolution.R;
-import com.semicode.findsolution.model.SectionModel;
+import com.semicode.findsolution.data.model.SectionModel;
+import com.semicode.findsolution.data.model.categories.CategoryDate;
+import com.semicode.findsolution.tags.Tags;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -21,13 +23,13 @@ import java.util.List;
 public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionViewHolder> {
 
 
-    private List<SectionModel> dataList;
+    private List<CategoryDate> dataList;
     private LayoutInflater mInflater;
     ONSectionClick onItemClick;
     Context context;
 
     // data is passed into the constructor
-    public SectionAdapter(Activity activity, List<SectionModel> data, ONSectionClick onItemClick) {
+    public SectionAdapter(Activity activity, List<CategoryDate> data, ONSectionClick onItemClick) {
         this.context = activity;
         this.mInflater = LayoutInflater.from(activity);
         this.dataList = data;
@@ -46,8 +48,9 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
     }
 
     private void setData(SectionViewHolder holder, int position) {
-        holder.textView.setText(dataList.get(position).getSectionName());
-        holder.imageView.setBackgroundResource(dataList.get(position).getSectionImage());
+        holder.textView.setText(dataList.get(position).getTitle());
+//        holder.imageView.setBackgroundResource(dataList.get(position).getSectionImage());
+        Picasso.get().load(Tags.IMAGE_URL+dataList.get(position).getImage()).into(holder.imageView);
     }
 
     @Override

@@ -62,6 +62,16 @@ dependencies {
     implementation 'com.chaos.view:pinview:1.4.3'
 //       gson
     implementation 'com.google.code.gson:gson:2.8.6'
+//    retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+//    converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+//picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+
+
 
 
 }

@@ -10,7 +10,7 @@ public class SharedPreferencesManger {
 
     public static SharedPreferences sharedPreferences = null;
     //    public static String API_TOKEN;
-    public final static String USER = "user", PASSWORD = "password", SPLASH = "splash",LANGUAGE = "language";
+    public final static String ISLOGIN = "isLogin",USERTOKEN="userToken",LANGUAGE = "language";
 
     public static void setSharedPreferences(Activity activity) {
         if (sharedPreferences == null) {
