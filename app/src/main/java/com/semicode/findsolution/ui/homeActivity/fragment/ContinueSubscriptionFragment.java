@@ -11,9 +11,10 @@ import androidx.fragment.app.Fragment;
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.databinding.FragmentSubscriptionBinding;
 import com.semicode.findsolution.databinding.FragmentSubscriptionContinueBindingImpl;
+import com.semicode.findsolution.share.HelperMethod;
 
 
-public class ContinueSubscriptionFragment extends Fragment {
+public class ContinueSubscriptionFragment extends BaseFragment {
 
     FragmentSubscriptionContinueBindingImpl binding ;
 
@@ -30,12 +31,18 @@ public class ContinueSubscriptionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_subscription, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_subscription_continue, container, false);
         initView();
+        initFragment();
         return binding.getRoot();
     }
 
     private void initView() {
 
+    }
+
+    @Override
+    public void onBack() {
+        super.onBack();
     }
 }

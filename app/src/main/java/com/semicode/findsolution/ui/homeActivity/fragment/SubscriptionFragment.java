@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.semicode.findsolution.R;
@@ -22,13 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SubscriptionFragment extends Fragment implements SubscriptionView {
+public class SubscriptionFragment extends Fragment implements SubscriptionView, PackageAdapter.OnPackageClick {
 
     FragmentSubscriptionBinding binding;
     SubscriptionPresenter presenter;
     PackageAdapter adapter;
     List<PackageData> dataList = new ArrayList<>();
-
+FragmentManager fragmentManager ;
     public static SubscriptionFragment newInstance() {
         SubscriptionFragment fragment = new SubscriptionFragment();
 
@@ -47,8 +48,9 @@ public class SubscriptionFragment extends Fragment implements SubscriptionView {
     }
 
     private void initView() {
-        presenter = new SubscriptionPresenter(getActivity(), this);
-        adapter = new PackageAdapter(getActivity(), dataList);
+        fragmentManager = getActivity().getSupportFragmentManager();
+        presenter = new SubscriptionPresenter(getActivity(), this,fragmentManager);
+        adapter = new PackageAdapter(getActivity(), dataList, this::onPackageClick);
         binding.subRvPackage.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         binding.subRvPackage.setAdapter(adapter);
 
@@ -69,5 +71,11 @@ public class SubscriptionFragment extends Fragment implements SubscriptionView {
     @Override
     public void onInternetFailed() {
         HelperMethod.makeTextToast(getActivity(), "please check your Internet Connection");
+    }
+
+    @Override
+    public void onPackageClick(int position) {
+        HelperMethod.makeTextToast(getActivity(), "you click " + position + "    package");
+        presenter.displayFragmentContinueSub();
     }
 }

@@ -25,6 +25,7 @@ import com.semicode.findsolution.mvp.activtyHome.ActivityHomeView;
 import com.semicode.findsolution.share.HelperMethod;
 import com.semicode.findsolution.share.Language;
 import com.semicode.findsolution.share.SharedPreferencesManger;
+import com.semicode.findsolution.ui.BaseActivity;
 import com.semicode.findsolution.ui.LoginActivity;
 
 
@@ -37,7 +38,7 @@ import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
 import static com.semicode.findsolution.share.SharedPreferencesManger.setSharedPreferences;
 
 
-public class HomeActivity extends AppCompatActivity implements ActivityHomeView {
+public class HomeActivity extends BaseActivity implements ActivityHomeView {
     private ActivityHomeBinding binding;
     private FirebaseAuth mAuth;
     DuoDrawerToggle drawerToggle;
@@ -58,15 +59,14 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
         setContentView(view);
 
 
-
         initView();
     }
 
     @Override
     protected void attachBaseContext(Context newBase) {
-//        lang ="en";
+//        lang = "en";
         lang =SharedPreferencesManger.LoadData(this,SharedPreferencesManger.LANGUAGE,"ar");
-        super.attachBaseContext(Language.updateResources(newBase,lang));
+        super.attachBaseContext(Language.updateResources(newBase, lang));
     }
 
     @SuppressLint({"ResourceAsColor", "UseCompatLoadingForDrawables"})
@@ -144,7 +144,7 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             SharedPreferencesManger.SaveData(this, SharedPreferencesManger.LANGUAGE, lang);
 //            Language.updateResources(this, lang);
-            HelperMethod.changeLang(this,lang);
+            HelperMethod.changeLang(this, lang);
             Intent intent = getIntent();
             finish();
             startActivity(intent);
@@ -167,8 +167,6 @@ public class HomeActivity extends AppCompatActivity implements ActivityHomeView 
     public void onHomeFragmentSelected() {
 
     }
-
-
 
 
 }

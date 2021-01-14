@@ -23,6 +23,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.semicode.findsolution.R;
 
+import com.semicode.findsolution.data.model.loginModel.LoginData;
+import com.semicode.findsolution.data.model.signUp.Data;
 import com.semicode.findsolution.databinding.ActivitySignupBinding;
 import com.semicode.findsolution.databinding.DialogSelectImageBinding;
 import com.semicode.findsolution.mvp.activitySginUp.ActivitySignUpPresenter;
@@ -47,6 +49,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private final String camera_permission = Manifest.permission.CAMERA;
     private Uri uri;
     String phoneCode, phoneNumber;
+    private String imagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         getDataFromIntent();
         binding.activityAddNameBtnConfirm.setOnClickListener(this);
         binding.signUpIvPhoto.setOnClickListener(this);
-        presenter = new ActivitySignUpPresenter(this, this, uri);
+        presenter = new ActivitySignUpPresenter(this, this);
     }
 
     private void getDataFromIntent() {
@@ -85,16 +88,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.activity_add_name_btn_confirm:
                 String name = binding.signUpEtName.getText().toString();
-//                String imagePath = uri.getPath();
-//                createImageDialog();
+                try {
+                    imagePath = uri.toString();
+                } catch (Exception e) {
+                    HelperMethod.makeTextToast(getApplicationContext(), "please select your image   ");
+                }
+
                 if (TextUtils.isEmpty(name)) {
-                    HelperMethod.makeTextToast(getApplicationContext(), "jjj" + " ");
+                    HelperMethod.makeTextToast(getApplicationContext(), "please enter your name  ");
 
                 } else {
-//                    presenter.signUp(imagePath, phoneCode, phoneNumber, name);
-                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
+                    presenter.signUp(imagePath, "+20", "1030091125", name);
+//
                 }
                 break;
             case R.id.sign_up_iv_photo:
@@ -219,14 +224,65 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-
     @Override
-    public void onSignUpDone(String imageUrl) {
-        HelperMethod.makeTextToast(this, imageUrl);
+    public void onConnectionFailed() {
+        HelperMethod.makeTextToast(this, "please check your internet connection");
+
     }
 
     @Override
-    public void onSignUpNotDone(String message) {
+    public void onSignUpSuccessfully(Data data) {
+        presenter.login(data.getPhoneCode(), data.getPhone());
+
+    }
+
+    @Override
+    public void onSignUpFailed(String filedMsg) {
+        HelperMethod.makeTextToast(this, filedMsg);
+
+    }
+
+    @Override
+    public void onSignUpFailure(String message) {
         HelperMethod.makeTextToast(this, message);
     }
+
+    @Override
+    public void onLoadSignUp() {
+
+    }
+
+    @Override
+    public void onFinishSignUp() {
+
+    }
+
+    @Override
+    public void onLoadLogin() {
+
+    }
+
+    @Override
+    public void onLoginSuccess(LoginData loginData) {
+        Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onLoginFailed(String message) {
+        HelperMethod.makeTextToast(this, message);
+    }
+
+    @Override
+    public void onLoginFinish() {
+
+    }
+
+    @Override
+    public void onLoginFailure(String message) {
+        HelperMethod.makeTextToast(this, message);
+    }
+
+
 }

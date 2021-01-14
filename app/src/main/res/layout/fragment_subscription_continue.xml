@@ -10,17 +10,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white">
 
-        >
-
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -36,8 +27,8 @@
                     style="@style/profile_tittles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginTop="24dp"
                     android:text="@string/complete_the_data_to_register"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -105,36 +96,37 @@
                 <LinearLayout
                     android:id="@+id/textInputLayout6"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_height="@dimen/_80sdp"
-                    android:clipToPadding="false"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@drawable/et_background"
+                    android:clipToPadding="false"
                     android:orientation="vertical"
                     app:hintTextColor="@color/color_edittext"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="start|top"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@color/white"
                         android:text="@string/location"
                         android:textColor="@color/color_edittext"
-                        android:layout_marginTop="-10dp"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_gravity="start|top"
-                        android:textSize="@dimen/medium_text"
-                        android:background="@color/white"
-                        />
-                    <TextView
-                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
 
+                    <TextView
                         android:layout_width="wrap_content"
+
                         android:layout_height="wrap_content"
-                        android:text="@string/addess"
-                        android:layout_marginStart="@dimen/_15sdp"
                         android:layout_gravity="start|top"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:text="@string/addess"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/small_text"
 
                         />

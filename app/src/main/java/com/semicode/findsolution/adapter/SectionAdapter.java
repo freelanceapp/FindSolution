@@ -50,7 +50,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
     private void setData(SectionViewHolder holder, int position) {
         holder.textView.setText(dataList.get(position).getTitle());
 //        holder.imageView.setBackgroundResource(dataList.get(position).getSectionImage());
-        Picasso.get().load(Tags.IMAGE_URL+dataList.get(position).getImage()).into(holder.imageView);
+        Picasso.get().load(Tags.IMAGE_URL + dataList.get(position).getImage()).into(holder.imageView);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
     }
 
 
-    public class SectionViewHolder extends RecyclerView.ViewHolder implements ONSectionClick {
+    public class SectionViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         ImageView imageView;
         ONSectionClick itemClick;
@@ -80,11 +80,6 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
         }
 
 
-        @Override
-        public void onSectionClick(int position) {
-            itemClick.onSectionClick(getAdapterPosition());
-
-        }
     }
 
     public interface ONSectionClick {
