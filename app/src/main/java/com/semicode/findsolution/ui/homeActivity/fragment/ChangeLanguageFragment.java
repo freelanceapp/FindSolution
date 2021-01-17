@@ -1,27 +1,19 @@
 package com.semicode.findsolution.ui.homeActivity.fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.semicode.findsolution.R;
 
 import com.semicode.findsolution.databinding.FragmentChangeLanguageBinding;
-import com.semicode.findsolution.share.HelperMethod;
-import com.semicode.findsolution.share.SharedPreferencesManger;
-import com.semicode.findsolution.ui.ProfileActivity;
+import com.semicode.findsolution.data.local.SharedPreferencesManger;
 import com.semicode.findsolution.ui.homeActivity.HomeActivity;
-
-import java.util.Objects;
 
 
 public class ChangeLanguageFragment extends Fragment implements View.OnClickListener {

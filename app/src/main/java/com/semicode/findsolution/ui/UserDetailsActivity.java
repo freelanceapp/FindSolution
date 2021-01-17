@@ -1,7 +1,6 @@
 package com.semicode.findsolution.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.semicode.findsolution.databinding.ActivityUserDetailsBinding;
 import com.semicode.findsolution.share.Language;
-import com.semicode.findsolution.share.SharedPreferencesManger;
+import com.semicode.findsolution.data.local.SharedPreferencesManger;
 
 
 public class UserDetailsActivity extends AppCompatActivity {

@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.semicode.findsolution.R;
-import com.semicode.findsolution.share.Common;
+import com.semicode.findsolution.share.HelperMethod;
 import com.semicode.findsolution.ui.ConfirmationCodeActivity;
 
 import java.util.Locale;
@@ -85,7 +85,7 @@ public class ActivityConfirmationCodePresenter {
     }
 
     public void checkValidCode(String code) {
-        ProgressDialog dialog = Common.createProgressDialog(context, context.getString(R.string.wait));
+        ProgressDialog dialog = HelperMethod.createProgressDialog(context, context.getString(R.string.wait));
         dialog.setCanceledOnTouchOutside(false);
         dialog.setCancelable(false);
         dialog.show();

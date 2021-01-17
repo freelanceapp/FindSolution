@@ -7,40 +7,42 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.adapter.menuDrawer.DrawerMenuAdapter;
-import com.semicode.findsolution.data.model.categories.CategoryDate;
+import com.semicode.findsolution.data.model.UserModelData;
+import com.semicode.findsolution.data.model.appInformation.AppInformationData;
 import com.semicode.findsolution.databinding.ActivityHomeBinding;
 import com.semicode.findsolution.data.model.MenuModel;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomePresenter;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomeView;
 import com.semicode.findsolution.share.HelperMethod;
 import com.semicode.findsolution.share.Language;
-import com.semicode.findsolution.share.SharedPreferencesManger;
+import com.semicode.findsolution.data.local.SharedPreferencesManger;
 import com.semicode.findsolution.ui.BaseActivity;
 import com.semicode.findsolution.ui.LoginActivity;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
 
-import static com.semicode.findsolution.share.SharedPreferencesManger.setSharedPreferences;
+import static com.semicode.findsolution.data.local.SharedPreferencesManger.setSharedPreferences;
 
 
 public class HomeActivity extends BaseActivity implements ActivityHomeView {
     private ActivityHomeBinding binding;
-    private FirebaseAuth mAuth;
     DuoDrawerToggle drawerToggle;
     private ArrayList<MenuModel> mOptions;
     private String[] tittle;
@@ -50,6 +52,7 @@ public class HomeActivity extends BaseActivity implements ActivityHomeView {
     ActivityHomePresenter presenter;
     DrawerMenuAdapter menuAdapter;
     String lang;
+    UserModelData userModelData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,27 +60,27 @@ public class HomeActivity extends BaseActivity implements ActivityHomeView {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
-
         initView();
+
     }
 
     @Override
     protected void attachBaseContext(Context newBase) {
 //        lang = "en";
-        lang =SharedPreferencesManger.LoadData(this,SharedPreferencesManger.LANGUAGE,"ar");
+        lang = SharedPreferencesManger.LoadData(this, SharedPreferencesManger.LANGUAGE, "ar");
         super.attachBaseContext(Language.updateResources(newBase, lang));
     }
 
     @SuppressLint({"ResourceAsColor", "UseCompatLoadingForDrawables"})
     private void initView() {
         setSharedPreferences(this);
-        mAuth = FirebaseAuth.getInstance();
+        userModelData = SharedPreferencesManger.LoadUserData(this);
         fragmentManager = getSupportFragmentManager();
         presenter = new ActivityHomePresenter(this, this, fragmentManager);
 
         getMenuData();
-        drawerToggle = new DuoDrawerToggle(this, binding.activityHomeDrawer, binding.activityHomeToolbar,
+
+        drawerToggle = new DuoDrawerToggle(this, binding.activityHomeDrawer, binding.toolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
         binding.activityHomeDrawer.setDrawerListener(drawerToggle);
@@ -86,6 +89,13 @@ public class HomeActivity extends BaseActivity implements ActivityHomeView {
         menuAdapter = new DrawerMenuAdapter(mOptions, this);
 
         binding.activityHomeMenu.setAdapter(menuAdapter);
+        binding.activityHomeMenu.getFooterView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
         binding.activityHomeMenu.setOnMenuClickListener(new DuoMenuView.OnMenuClickListener() {
             @Override
             public void onFooterClicked() {
@@ -107,6 +117,10 @@ public class HomeActivity extends BaseActivity implements ActivityHomeView {
 
             }
         });
+        binding.toolbar.inflateMenu(R.menu.top_menu);
+        binding.toolbar.setNavigationIcon(this.getDrawable(R.drawable.ic_menu));
+
+//        setSupportActionBar(binding.toolbar);
     }
 
     private void getMenuData() {
@@ -134,9 +148,10 @@ public class HomeActivity extends BaseActivity implements ActivityHomeView {
         }
     }
 
+
     private void logout() {
-        mAuth.signOut();
         HelperMethod.makeTextToast(getApplicationContext(), "logout");
+        SharedPreferencesManger.clean(this);
         startActivity(new Intent(HomeActivity.this, LoginActivity.class));
     }
 
@@ -166,6 +181,18 @@ public class HomeActivity extends BaseActivity implements ActivityHomeView {
     @Override
     public void onHomeFragmentSelected() {
 
+    }
+
+    @Override
+    public void onGetAppInformation(AppInformationData appInformationData) {
+        HelperMethod.makeTextToast(this, "App data loaded");
+        SharedPreferencesManger.SaveData(this, SharedPreferencesManger.APPDATA, appInformationData);
+    }
+
+    @Override
+    public void onFailedLoadInformationData() {
+        HelperMethod.makeTextToast(this, "Failed to load App data");
+        presenter.getAppInformation();
     }
 
 

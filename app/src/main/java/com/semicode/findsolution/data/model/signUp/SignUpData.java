@@ -1,11 +1,11 @@
 
-package com.semicode.findsolution.data.model.loginModel;
+package com.semicode.findsolution.data.model.signUp;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginData implements Serializable
+public class SignUpData implements Serializable
 {
 
     @SerializedName("id")
@@ -110,89 +110,7 @@ public class LoginData implements Serializable
     @SerializedName("current_package")
     @Expose
     private Object currentPackage;
-    private final static long serialVersionUID = -3815905464656294520L;
-
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public LoginData() {
-    }
-
-    /**
-     * 
-     * @param currentPackageId
-     * @param subCategory
-     * @param isBlock
-     * @param latitude
-     * @param rating
-     * @param whatsappNumber
-     * @param isLogin
-     * @param createdAt
-     * @param packageFinishedAt
-     * @param contactNumber
-     * @param phoneCode
-     * @param logo
-     * @param isConfirmed
-     * @param id
-     * @param email
-     * @param paymentStatus
-     * @param longitude
-     * @param updatedAt
-     * @param address
-     * @param softwareType
-     * @param workTitle
-     * @param banner
-     * @param currentPackage
-     * @param token
-     * @param logoutTime
-     * @param deletedAt
-     * @param moreDetails
-     * @param phone
-     * @param emailVerifiedAt
-     * @param packageStartedAt
-     * @param numberOfPaymentDays
-     * @param name
-     * @param userType
-     * @param category
-     */
-    public LoginData(Integer id, String userType, String name, Object email, String phoneCode, String phone, String logo, Object address, Object latitude, Object longitude, Object workTitle, Object moreDetails, Object contactNumber, Object whatsappNumber, Object currentPackageId, Object packageStartedAt, Object packageFinishedAt, String paymentStatus, String isConfirmed, String isBlock, String isLogin, Object logoutTime, String softwareType, Object banner, Integer rating, Object emailVerifiedAt, Object deletedAt, String createdAt, String updatedAt, String token, Object category, Object subCategory, Integer numberOfPaymentDays, Object currentPackage) {
-        super();
-        this.id = id;
-        this.userType = userType;
-        this.name = name;
-        this.email = email;
-        this.phoneCode = phoneCode;
-        this.phone = phone;
-        this.logo = logo;
-        this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.workTitle = workTitle;
-        this.moreDetails = moreDetails;
-        this.contactNumber = contactNumber;
-        this.whatsappNumber = whatsappNumber;
-        this.currentPackageId = currentPackageId;
-        this.packageStartedAt = packageStartedAt;
-        this.packageFinishedAt = packageFinishedAt;
-        this.paymentStatus = paymentStatus;
-        this.isConfirmed = isConfirmed;
-        this.isBlock = isBlock;
-        this.isLogin = isLogin;
-        this.logoutTime = logoutTime;
-        this.softwareType = softwareType;
-        this.banner = banner;
-        this.rating = rating;
-        this.emailVerifiedAt = emailVerifiedAt;
-        this.deletedAt = deletedAt;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.token = token;
-        this.category = category;
-        this.subCategory = subCategory;
-        this.numberOfPaymentDays = numberOfPaymentDays;
-        this.currentPackage = currentPackage;
-    }
+    private final static long serialVersionUID = 5176672389933939462L;
 
     public Integer getId() {
         return id;

@@ -15,7 +15,7 @@ import com.semicode.findsolution.data.model.SectionModel;
 import com.semicode.findsolution.data.model.UserModel;
 import com.semicode.findsolution.share.HelperMethod;
 import com.semicode.findsolution.share.Language;
-import com.semicode.findsolution.share.SharedPreferencesManger;
+import com.semicode.findsolution.data.local.SharedPreferencesManger;
 import com.semicode.findsolution.ui.homeActivity.HomeActivity;
 
 import java.util.ArrayList;

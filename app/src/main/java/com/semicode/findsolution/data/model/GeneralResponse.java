@@ -1,49 +1,29 @@
 
-package com.semicode.findsolution.data.model.signUp;
+package com.semicode.findsolution.data.model;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SignUp implements Serializable
+public class GeneralResponse implements Serializable
 {
 
     @SerializedName("data")
     @Expose
-    private Data data;
+    private Object data;
     @SerializedName("message")
     @Expose
     private String message;
     @SerializedName("status")
     @Expose
     private Integer status;
-    private final static long serialVersionUID = -435786610676453678L;
+    private final static long serialVersionUID = -5795403416203368902L;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public SignUp() {
-    }
-
-    /**
-     * 
-     * @param data
-     * @param message
-     * @param status
-     */
-    public SignUp(Data data, String message, Integer status) {
-        super();
-        this.data = data;
-        this.message = message;
-        this.status = status;
-    }
-
-    public Data getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(Object data) {
         this.data = data;
     }
 

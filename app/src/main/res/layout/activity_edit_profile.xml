@@ -17,8 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
-            android:elevation="@dimen/_10sdp"
-            />
+            android:elevation="@dimen/_10sdp" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -41,33 +40,27 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/circleImageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_20sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:elevation="@dimen/_11sdp"
                             android:src="@drawable/ic_image"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-
-                            />
+                            app:civ_border_color="@color/white"
+                            app:civ_border_width="@dimen/_2sdp" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="end|bottom"
                             android:elevation="@dimen/_12sdp"
-                            android:src="@drawable/ic_edit"
-                            app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
-                            app:layout_constraintStart_toStartOf="@+id/circleImageView" />
+                            android:src="@drawable/ic_edit" />
 
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </FrameLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -120,6 +113,7 @@
                     style="@style/out_line_et"
                     android:layout_height="@dimen/_45sdp"
                     app:endIconDrawable="@drawable/ic_down_menu"
+                    app:endIconTint="@color/colorAccent"
                     app:endIconMode="dropdown_menu"
                     app:hintTextColor="@color/color_edittext"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -136,6 +130,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout4"
                     style="@style/out_line_et_no_hint_gray"
+                    app:endIconTint="@color/gray"
                     android:layout_height="@dimen/_45sdp"
                     app:endIconDrawable="@drawable/ic_down_menu"
                     app:endIconMode="dropdown_menu"
@@ -176,36 +171,37 @@
                 <LinearLayout
                     android:id="@+id/textInputLayout6"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_height="@dimen/_80sdp"
-                    android:clipToPadding="false"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@drawable/et_background"
+                    android:clipToPadding="false"
                     android:orientation="vertical"
                     app:hintTextColor="@color/color_edittext"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="start|top"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@color/white"
                         android:text="@string/location"
                         android:textColor="@color/color_edittext"
-                        android:layout_marginTop="-10dp"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_gravity="start|top"
-                        android:textSize="@dimen/medium_text"
-                        android:background="@color/white"
-                        />
-                    <TextView
-                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
 
+                    <TextView
                         android:layout_width="wrap_content"
+
                         android:layout_height="wrap_content"
-                        android:text="@string/addess"
-                        android:layout_marginStart="@dimen/_15sdp"
                         android:layout_gravity="start|top"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:text="@string/addess"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/small_text"
 
                         />

@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.data.api.Api;
+import com.semicode.findsolution.data.model.Slider.SlidersModel;
 import com.semicode.findsolution.data.model.categories.Category;
 import com.semicode.findsolution.mvp.activtyHome.ActivityHomeView;
 import com.semicode.findsolution.tags.Tags;
@@ -29,12 +30,12 @@ public class HomePresenter {
     private HomeView view;
 
 
-
     public HomePresenter(Context context, HomeView view) {
         this.context = context;
         this.view = view;
 
         getAllCategories();
+        getSlider();
     }
 
     private void getAllCategories() {
@@ -55,10 +56,23 @@ public class HomePresenter {
         });
     }
 
+    private void getSlider() {
+        Api.getApiService(Tags.base_url).getSliders().enqueue(new Callback<SlidersModel>() {
+            @Override
+            public void onResponse(Call<SlidersModel> call, Response<SlidersModel> response) {
+                if (response.isSuccessful()) {
+                    view.onLoadSlider(response.body().getData());
+                } else {
+                    view.onFailedSlider(response.errorBody().toString());
+                }
+            }
 
-
-
-
+            @Override
+            public void onFailure(Call<SlidersModel> call, Throwable t) {
+                view.onFailureSlider(t.getMessage());
+            }
+        });
+    }
 
 
 }

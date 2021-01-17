@@ -29,7 +29,8 @@ public class SubscriptionFragment extends Fragment implements SubscriptionView, 
     SubscriptionPresenter presenter;
     PackageAdapter adapter;
     List<PackageData> dataList = new ArrayList<>();
-FragmentManager fragmentManager ;
+    FragmentManager fragmentManager;
+
     public static SubscriptionFragment newInstance() {
         SubscriptionFragment fragment = new SubscriptionFragment();
 
@@ -49,11 +50,11 @@ FragmentManager fragmentManager ;
 
     private void initView() {
         fragmentManager = getActivity().getSupportFragmentManager();
-        presenter = new SubscriptionPresenter(getActivity(), this,fragmentManager);
+        presenter = new SubscriptionPresenter(getActivity(), this, fragmentManager);
         adapter = new PackageAdapter(getActivity(), dataList, this::onPackageClick);
         binding.subRvPackage.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         binding.subRvPackage.setAdapter(adapter);
-
+        getActivity().getActionBar();
     }
 
     @Override
@@ -76,6 +77,8 @@ FragmentManager fragmentManager ;
     @Override
     public void onPackageClick(int position) {
         HelperMethod.makeTextToast(getActivity(), "you click " + position + "    package");
-        presenter.displayFragmentContinueSub();
+        binding.subscriptionLayout.setVisibility(View.GONE);
+        binding.subscriptionLayoutContinue.setVisibility(View.VISIBLE);
+//        presenter.displayFragmentContinueSub();
     }
 }

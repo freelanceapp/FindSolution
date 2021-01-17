@@ -3,16 +3,22 @@ package com.semicode.findsolution.ui.homeActivity.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.adapter.SectionAdapter;
+import com.semicode.findsolution.adapter.SliderAdapter;
+import com.semicode.findsolution.data.model.Slider.SliderData;
 import com.semicode.findsolution.data.model.categories.CategoryDate;
 import com.semicode.findsolution.databinding.FragmentHomeBinding;
 import com.semicode.findsolution.data.model.SectionModel;
@@ -29,8 +35,10 @@ public class HomeFragment extends Fragment implements SectionAdapter.ONSectionCl
 
     FragmentHomeBinding binding;
     SectionAdapter adapter;
+    SliderAdapter sliderAdapter;
     HomePresenter presenter;
     private List<CategoryDate> datalist = new ArrayList<>();
+    private List<SliderData> sliderData = new ArrayList<>();
 
 
     public static HomeFragment newInstance() {
@@ -46,12 +54,14 @@ public class HomeFragment extends Fragment implements SectionAdapter.ONSectionCl
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         initView();
+//        setHasOptionsMenu(true);
         return binding.getRoot();
     }
 
     private void initView() {
-
+//        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         adapter = new SectionAdapter(getActivity(), datalist, this);
+        sliderAdapter = new SliderAdapter(getActivity(), sliderData);
         presenter = new HomePresenter(getActivity(), this);
         binding.homeFragmentRvSections.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         binding.homeFragmentRvSections.setAdapter(adapter);
@@ -74,6 +84,17 @@ public class HomeFragment extends Fragment implements SectionAdapter.ONSectionCl
     }
 
     @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.top_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    //    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater()
+//        return true;
+//    }
+    @Override
     public void onGetAllBasicCategories(List<CategoryDate> data) {
         HelperMethod.makeTextToast(getActivity(), "data load successfully");
         datalist.addAll(data);
@@ -89,6 +110,25 @@ public class HomeFragment extends Fragment implements SectionAdapter.ONSectionCl
     @Override
     public void onFailure() {
         HelperMethod.makeTextToast(getActivity(), "on failure");
+
+    }
+
+    @Override
+    public void onLoadSlider(List<SliderData> data) {
+        HelperMethod.makeTextToast(getActivity(), "slider data load successfully");
+        sliderData.addAll(data);
+        sliderAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onFailedSlider(String error) {
+        HelperMethod.makeTextToast(getActivity(), "failed :" + error);
+
+    }
+
+    @Override
+    public void onFailureSlider(String message) {
+        HelperMethod.makeTextToast(getActivity(), "Failure :" + message);
 
     }
 }

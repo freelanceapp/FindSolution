@@ -7,11 +7,13 @@ import androidx.fragment.app.FragmentManager;
 
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.data.api.Api;
+import com.semicode.findsolution.data.model.appInformation.AppInformation;
 import com.semicode.findsolution.data.model.categories.Category;
 import com.semicode.findsolution.tags.Tags;
 import com.semicode.findsolution.ui.ProfileActivity;
 import com.semicode.findsolution.ui.homeActivity.fragment.AboutAppFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.ConnectUsFragment;
+import com.semicode.findsolution.ui.homeActivity.fragment.ContinueSubscriptionFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.HomeFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.ChangeLanguageFragment;
 import com.semicode.findsolution.ui.homeActivity.fragment.SubscriptionFragment;
@@ -34,7 +36,7 @@ public class ActivityHomePresenter {
     private ChangeLanguageFragment changeLanguageFragment;
     private SubscriptionFragment subscriptionFragment;
     private TermsAndConditionFragment termsAndConditionFragment;
-
+    private ContinueSubscriptionFragment continueSubscriptionFragment;
 
     public ActivityHomePresenter(Context context, ActivityHomeView view, FragmentManager fragmentManager) {
         this.context = context;
@@ -42,9 +44,8 @@ public class ActivityHomePresenter {
         this.view = view;
 
         displayFragmentHome();
-
+        getAppInformation();
     }
-
 
 
     public void displayFragments(int position) {
@@ -91,6 +92,7 @@ public class ActivityHomePresenter {
         if (aboutAppFragment != null && aboutAppFragment.isAdded()) {
             fragmentManager.beginTransaction().hide(aboutAppFragment).commit();
         }
+
 
         if (connectUsFragment != null && connectUsFragment.isAdded()) {
             fragmentManager.beginTransaction().hide(connectUsFragment).commit();
@@ -264,6 +266,25 @@ public class ActivityHomePresenter {
         } else {
             fragmentManager.beginTransaction().add(R.id.activity_home_container, termsAndConditionFragment, "Terms And Condition").commit();
         }
+    }
+
+    public void getAppInformation() {
+        Api.getApiService(Tags.base_url).getAppInformation().enqueue(new Callback<AppInformation>() {
+            @Override
+            public void onResponse(Call<AppInformation> call, Response<AppInformation> response) {
+                if (response.isSuccessful() && response.body().getData() != null) {
+                    view.onGetAppInformation(response.body().getData());
+                }else {
+                    view.onFailedLoadInformationData();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AppInformation> call, Throwable t) {
+
+            }
+        });
     }
 
 

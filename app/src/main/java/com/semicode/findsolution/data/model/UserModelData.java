@@ -1,11 +1,11 @@
 
-package com.semicode.findsolution.data.model.signUp;
+package com.semicode.findsolution.data.model;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Data implements Serializable
+public class UserModelData implements Serializable
 {
 
     @SerializedName("id")
@@ -110,13 +110,13 @@ public class Data implements Serializable
     @SerializedName("current_package")
     @Expose
     private Object currentPackage;
-    private final static long serialVersionUID = 4411752249661225786L;
+    private final static long serialVersionUID = -3815905464656294520L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Data() {
+    public UserModelData() {
     }
 
     /**
@@ -156,7 +156,7 @@ public class Data implements Serializable
      * @param userType
      * @param category
      */
-    public Data(Integer id, String userType, String name, Object email, String phoneCode, String phone, String logo, Object address, Object latitude, Object longitude, Object workTitle, Object moreDetails, Object contactNumber, Object whatsappNumber, Object currentPackageId, Object packageStartedAt, Object packageFinishedAt, String paymentStatus, String isConfirmed, String isBlock, String isLogin, Object logoutTime, String softwareType, Object banner, Integer rating, Object emailVerifiedAt, Object deletedAt, String createdAt, String updatedAt, String token, Object category, Object subCategory, Integer numberOfPaymentDays, Object currentPackage) {
+    public UserModelData(Integer id, String userType, String name, Object email, String phoneCode, String phone, String logo, Object address, Object latitude, Object longitude, Object workTitle, Object moreDetails, Object contactNumber, Object whatsappNumber, Object currentPackageId, Object packageStartedAt, Object packageFinishedAt, String paymentStatus, String isConfirmed, String isBlock, String isLogin, Object logoutTime, String softwareType, Object banner, Integer rating, Object emailVerifiedAt, Object deletedAt, String createdAt, String updatedAt, String token, Object category, Object subCategory, Integer numberOfPaymentDays, Object currentPackage) {
         super();
         this.id = id;
         this.userType = userType;

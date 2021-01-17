@@ -3,11 +3,11 @@ package com.semicode.findsolution.ui;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -23,14 +23,13 @@ import androidx.databinding.DataBindingUtil;
 
 import com.semicode.findsolution.R;
 
-import com.semicode.findsolution.data.model.loginModel.LoginData;
-import com.semicode.findsolution.data.model.signUp.Data;
+import com.semicode.findsolution.data.model.UserModelData;
 import com.semicode.findsolution.databinding.ActivitySignupBinding;
 import com.semicode.findsolution.databinding.DialogSelectImageBinding;
 import com.semicode.findsolution.mvp.activitySginUp.ActivitySignUpPresenter;
 import com.semicode.findsolution.mvp.activitySginUp.ActivitySignUpView;
-import com.semicode.findsolution.share.Common;
 import com.semicode.findsolution.share.HelperMethod;
+import com.semicode.findsolution.data.local.SharedPreferencesManger;
 import com.semicode.findsolution.ui.homeActivity.HomeActivity;
 import com.squareup.picasso.Picasso;
 
@@ -50,6 +49,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private Uri uri;
     String phoneCode, phoneNumber;
     private String imagePath;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +98,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     HelperMethod.makeTextToast(getApplicationContext(), "please enter your name  ");
 
                 } else {
-                    presenter.signUp(imagePath, "+20", "1030091125", name);
-//
+//                    presenter.signUp(imagePath, "+20", "1030091125", name);
+                    presenter.login("+20", "1030091125");
                 }
                 break;
             case R.id.sign_up_iv_photo:
@@ -165,7 +165,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             HelperMethod.makeTextToast(this, "on results");
             uri = data.getData();
             binding.signUpIvIcon.setVisibility(View.GONE);
-            File file = new File(Common.getImagePath(this, uri));
+            File file = new File(HelperMethod.getImagePath(this, uri));
             Picasso.get().load(file).fit().into(binding.signUpIvPhoto);
 //            signUpModel.setLicenseImage(uri.toString());
 //            binding.setModel(signUpModel);
@@ -178,7 +178,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
             if (uri != null) {
 
-                String path = Common.getImagePath(this, uri);
+                String path = HelperMethod.getImagePath(this, uri);
                 if (path != null) {
                     Picasso.get().load(new File(path)).fit().into(binding.signUpIvPhoto);
 
@@ -197,13 +197,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = new Intent();
 
         if (req == READ_REQ) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-                intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-            } else {
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-
-            }
+            intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+            intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
 
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.setType("image/*");
@@ -231,9 +226,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
-    public void onSignUpSuccessfully(Data data) {
-        presenter.login(data.getPhoneCode(), data.getPhone());
+    public void onSignUpSuccessfully(UserModelData userModelData) {
+        presenter.login(userModelData.getPhoneCode(), userModelData.getPhone());
 
+    }
+
+    @Override
+    public void onSignUpSuccessfully() {
+        HelperMethod.makeTextToast(this, "body not null");
     }
 
     @Override
@@ -259,11 +259,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onLoadLogin() {
-
+        progressDialog = HelperMethod.showProgressDialog(this, "please wait");
     }
 
     @Override
-    public void onLoginSuccess(LoginData loginData) {
+    public void onLoginSuccess(UserModelData userModelData) {
+        HelperMethod.makeTextToast(this, "login done ");
+        SharedPreferencesManger.SaveData(this, SharedPreferencesManger.USERDATA, userModelData);
+        progressDialog.dismiss();
+
         Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
         startActivity(intent);
         finish();
@@ -272,16 +276,21 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onLoginFailed(String message) {
         HelperMethod.makeTextToast(this, message);
+        progressDialog.dismiss();
+
     }
 
     @Override
     public void onLoginFinish() {
+        progressDialog.dismiss();
 
     }
 
     @Override
     public void onLoginFailure(String message) {
         HelperMethod.makeTextToast(this, message);
+        progressDialog.dismiss();
+
     }
 
 

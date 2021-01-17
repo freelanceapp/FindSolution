@@ -8,24 +8,18 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.databinding.ActivityConfirmationCodeBinding;
 import com.semicode.findsolution.mvp.activtyConfirmationCode.ActivityConfirmationCodePresenter;
 import com.semicode.findsolution.mvp.activtyConfirmationCode.ActivityConfirmationCodeView;
-import com.semicode.findsolution.share.Common;
+import com.semicode.findsolution.data.local.SharedPreferencesManger;
 import com.semicode.findsolution.share.HelperMethod;
-import com.semicode.findsolution.share.SharedPreferencesManger;
 
 import java.util.Locale;
 
 public class ConfirmationCodeActivity extends AppCompatActivity implements ActivityConfirmationCodeView {
     private ActivityConfirmationCodeBinding binding;
-    private FirebaseAuth mAuth;
-    DatabaseReference mRef;
+
     private String phone_code = "+20";
     private String phoneNumber = "";
 
@@ -41,8 +35,6 @@ public class ConfirmationCodeActivity extends AppCompatActivity implements Activ
         View view = binding.getRoot();
         setContentView(view);
 
-        mAuth = FirebaseAuth.getInstance();
-        mRef = FirebaseDatabase.getInstance().getReference().child("User");
         getDataFromIntent();
         intiView();
 
@@ -100,13 +92,13 @@ public class ConfirmationCodeActivity extends AppCompatActivity implements Activ
 
     @Override
     public void onCodeFailed(String msg) {
-        Common.CreateDialogAlert(this, msg);
+        HelperMethod.CreateDialogAlert(this, msg);
 
     }
 
     @Override
     public void onLogin() {
-        HelperMethod.makeTextToast(getApplicationContext(), "done Login");
+//        HelperMethod.makeTextToast(getApplicationContext(), "done Login");
         SharedPreferencesManger.SaveData(this,SharedPreferencesManger.ISLOGIN,true);
         Intent intent = new Intent(ConfirmationCodeActivity.this, SignUpActivity.class);
         intent.putExtra("PHONE_CODE", phone_code);

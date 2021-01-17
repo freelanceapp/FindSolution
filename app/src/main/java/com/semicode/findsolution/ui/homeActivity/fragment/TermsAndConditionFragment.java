@@ -9,19 +9,22 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.semicode.findsolution.R;
+import com.semicode.findsolution.data.local.SharedPreferencesManger;
+import com.semicode.findsolution.data.model.appInformation.AppInformationData;
 import com.semicode.findsolution.databinding.FragmentTermsAndConditionsBinding;
 
 
 public class TermsAndConditionFragment extends Fragment {
 
-    FragmentTermsAndConditionsBinding binding ;
+    FragmentTermsAndConditionsBinding binding;
+    private AppInformationData appInformationData;
+
 
     public static TermsAndConditionFragment newInstance() {
         TermsAndConditionFragment fragment = new TermsAndConditionFragment();
 
         return fragment;
     }
-
 
 
     @Override
@@ -35,6 +38,7 @@ public class TermsAndConditionFragment extends Fragment {
     }
 
     private void initView() {
-
+        appInformationData = SharedPreferencesManger.LoadAppInformationData(getActivity());
+        binding.termsTv.setText(appInformationData.getTermsCondition());
     }
 }

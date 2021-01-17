@@ -1,16 +1,18 @@
-package com.semicode.findsolution.share;
+package com.semicode.findsolution.data.local;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.semicode.findsolution.data.model.UserModelData;
+import com.semicode.findsolution.data.model.appInformation.AppInformationData;
 
 
 public class SharedPreferencesManger {
 
     public static SharedPreferences sharedPreferences = null;
     //    public static String API_TOKEN;
-    public final static String ISLOGIN = "isLogin",USERTOKEN="userToken",LANGUAGE = "language";
+    public final static String ISLOGIN = "isLogin", USERTOKEN = "userToken", LANGUAGE = "language", APPDATA = "appInformationData", USERDATA = "userData";
 
     public static void setSharedPreferences(Activity activity) {
         if (sharedPreferences == null) {
@@ -52,10 +54,26 @@ public class SharedPreferencesManger {
         }
     }
 
-    public static String LoadData(Activity activity, String data_Key,String defValue) {
+    public static String LoadData(Activity activity, String data_Key, String defValue) {
         setSharedPreferences(activity);
 
         return sharedPreferences.getString(data_Key, "");
+    }
+
+    public static AppInformationData LoadAppInformationData(Activity activity) {
+        setSharedPreferences(activity);
+        String informationString = sharedPreferences.getString(APPDATA, "");
+        Gson gson = new Gson();
+
+        return gson.fromJson(informationString, AppInformationData.class);
+    }
+
+    public static UserModelData LoadUserData(Activity activity) {
+        setSharedPreferences(activity);
+        String userData = sharedPreferences.getString(USERDATA, "");
+        Gson gson = new Gson();
+
+        return gson.fromJson(userData, UserModelData.class);
     }
 
     public static boolean LoadBoolean(Activity activity, String data_Key) {

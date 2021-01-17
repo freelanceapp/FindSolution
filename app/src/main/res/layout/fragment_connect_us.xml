@@ -54,6 +54,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView7">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/connect_us_et_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -83,6 +84,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/imageView7">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/connect_us_et_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/email"
@@ -103,6 +105,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/imageView7">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/connect_us_et_subject"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/subject"
@@ -117,7 +120,7 @@
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/connect_us_et_message"
+                    android:id="@+id/connect_us_input"
                     style="@style/out_line_et_no_hint_gray"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_150sdp"
@@ -127,6 +130,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/connect_us_et_message"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="top|start"
@@ -149,7 +153,7 @@
                     app:cornerRadius="@dimen/_15sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/connect_us_et_message" />
+                    app:layout_constraintTop_toBottomOf="@+id/connect_us_input" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -171,8 +175,7 @@
                     android:weightSum="4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8"
-                    >
+                    app:layout_constraintTop_toBottomOf="@+id/textView8">
 
                     <ImageView
                         android:id="@+id/connect_us_iv_facebook"

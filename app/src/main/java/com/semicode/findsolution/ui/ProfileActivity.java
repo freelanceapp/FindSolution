@@ -7,14 +7,16 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.semicode.findsolution.data.model.UserModelData;
 import com.semicode.findsolution.databinding.ActivityProfileBinding;
 import com.semicode.findsolution.share.Language;
-import com.semicode.findsolution.share.SharedPreferencesManger;
+import com.semicode.findsolution.data.local.SharedPreferencesManger;
 
 
 public class ProfileActivity extends AppCompatActivity {
     private ActivityProfileBinding binding;
     String lang ;
+    private UserModelData userModelData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,9 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void intilView() {
-
-
+        userModelData = SharedPreferencesManger.LoadUserData(this);
+        binding.userDetailsTvName.setText(userModelData.getName());
+        binding.userDetailsTvJopDetails.setText( userModelData.getPhoneCode()+""+userModelData.getPhone());
     }
 
 

@@ -4,13 +4,14 @@ package com.semicode.findsolution.data.model.loginModel;
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.semicode.findsolution.data.model.UserModelData;
 
 public class Login implements Serializable
 {
 
     @SerializedName("data")
     @Expose
-    private LoginData loginData;
+    private UserModelData userModelData;
     @SerializedName("message")
     @Expose
     private String message;
@@ -28,23 +29,23 @@ public class Login implements Serializable
 
     /**
      * 
-     * @param loginData
+     * @param userModelData
      * @param message
      * @param status
      */
-    public Login(LoginData loginData, String message, Integer status) {
+    public Login(UserModelData userModelData, String message, Integer status) {
         super();
-        this.loginData = loginData;
+        this.userModelData = userModelData;
         this.message = message;
         this.status = status;
     }
 
-    public LoginData getLoginData() {
-        return loginData;
+    public UserModelData getUserModelData() {
+        return userModelData;
     }
 
-    public void setLoginData(LoginData loginData) {
-        this.loginData = loginData;
+    public void setUserModelData(UserModelData userModelData) {
+        this.userModelData = userModelData;
     }
 
     public String getMessage() {
