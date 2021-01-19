@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.semicode.findsolution.R;
 import com.semicode.findsolution.adapter.PackageAdapter;
 import com.semicode.findsolution.data.model.packageModel.PackageData;
-import com.semicode.findsolution.databinding.FragmentHomeBinding;
 import com.semicode.findsolution.databinding.FragmentSubscriptionBinding;
 import com.semicode.findsolution.mvp.fragmentSubscription.SubscriptionPresenter;
 import com.semicode.findsolution.mvp.fragmentSubscription.SubscriptionView;
@@ -51,7 +50,7 @@ public class SubscriptionFragment extends Fragment implements SubscriptionView, 
     private void initView() {
         fragmentManager = getActivity().getSupportFragmentManager();
         presenter = new SubscriptionPresenter(getActivity(), this, fragmentManager);
-        adapter = new PackageAdapter(getActivity(), dataList, this::onPackageClick);
+        adapter = new PackageAdapter( dataList, getActivity(),this::onPackageClick);
         binding.subRvPackage.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         binding.subRvPackage.setAdapter(adapter);
         getActivity().getActionBar();

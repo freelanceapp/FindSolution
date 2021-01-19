@@ -3,12 +3,18 @@ package com.semicode.findsolution.adapter;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.semicode.findsolution.R;
@@ -53,6 +59,10 @@ public class SectionFilterAdapter extends RecyclerView.Adapter<SectionFilterAdap
         if (selectedPosition == position) {
             holder.itemView.setBackground(context.getDrawable(R.drawable.btn_background_25_radius));
             holder.textView.setTextColor(context.getResources().getColor(R.color.white));
+//            holder.imageView.setColorFilter(Color.argb(255, 255, 255, 255));
+//            holder.imageView.setColorFilter(context.getResources().getColor(R.color.white), PorterDuff.Mode.ADD);
+            ColorStateList csl = AppCompatResources.getColorStateList(context, R.color.white);
+            ImageViewCompat.setImageTintList(holder.imageView, csl);
         }else {
             holder.itemView.setBackground(context.getDrawable(R.drawable.item_background_stroke_gray_20));
             holder.textView.setTextColor(context.getResources().getColor(R.color.gray));

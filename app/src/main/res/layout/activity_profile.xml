@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="userData"
+    type="com.semicode.findsolution.data.model.UserModelData" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -32,6 +34,7 @@
             <ImageView
                 android:id="@+id/user_details_iv_profile"
                 android:layout_width="@dimen/_60sdp"
+                image="@{userData.logo"
                 android:layout_height="@dimen/_60sdp"
                 android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
-                android:text="TextView"
+                android:text="@{userData.name}"
                 app:layout_constraintEnd_toEndOf="@+id/user_details_iv_profile"
                 app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="@+id/user_details_iv_profile"
@@ -95,11 +98,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
+                    android:text="@{userData.phone}"
                     android:padding="@dimen/_8sdp"
-                    android:text="@string/large_text"
                     app:layout_constraintBottom_toTopOf="@+id/user_details_tv_more_details"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/user_details_tv_jop"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/user_details_tv_jop" />
 
                 <TextView

@@ -42,7 +42,7 @@ public class ActivitySignUpPresenter {
         MultipartBody.Part image_form_part = HelperMethod.getMultiPartImage(context, Uri.parse(imagePath), "logo");
 
         if (HelperMethod.isConnected(context)) {
-            Api.getApiService(Tags.base_url).signUp(image_form_part, phone_code_part, phone_part, name_part, software_type_part).enqueue(new Callback<SignUpModel>() {
+            Api.getApiService(Tags.base_url).signUp( image_form_part,phone_code_part, phone_part, name_part, software_type_part).enqueue(new Callback<SignUpModel>() {
                 @Override
                 public void onResponse(Call<SignUpModel> call, Response<SignUpModel> response) {
                     if (response.isSuccessful()) {

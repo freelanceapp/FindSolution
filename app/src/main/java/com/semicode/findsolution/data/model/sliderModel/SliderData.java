@@ -1,5 +1,5 @@
 
-package com.semicode.findsolution.data.model.Slider;
+package com.semicode.findsolution.data.model.sliderModel;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;

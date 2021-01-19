@@ -1,56 +1,53 @@
 package com.semicode.findsolution.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.semicode.findsolution.R;
-import com.semicode.findsolution.data.model.SectionModel;
 import com.semicode.findsolution.data.model.categories.CategoryDate;
-import com.semicode.findsolution.tags.Tags;
-import com.squareup.picasso.Picasso;
+import com.semicode.findsolution.databinding.ItemRvSectionBinding;
 
 import java.util.List;
 
 
 public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionViewHolder> {
 
-
     private List<CategoryDate> dataList;
     private LayoutInflater mInflater;
     ONSectionClick onItemClick;
     Context context;
+//    -------------   -------------   -------------   -------------   -------------   -------------   -------------
+    public SectionAdapter(List<CategoryDate> categoryDate, Context context, ONSectionClick onItemClick) {
+        this.dataList = categoryDate;
+        this.context = context;
+        mInflater = LayoutInflater.from(context);
+        this.onItemClick =onItemClick ;
 
-    // data is passed into the constructor
-    public SectionAdapter(Activity activity, List<CategoryDate> data, ONSectionClick onItemClick) {
-        this.context = activity;
-        this.mInflater = LayoutInflater.from(activity);
-        this.dataList = data;
-        this.onItemClick = onItemClick;
+//        Paper.init(context);
+//        lang = Paper.book().read("lang", java.util.Locale.getDefault().getLanguage());
+
     }
-
+    @androidx.annotation.NonNull
     @Override
-    public SectionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_rv_section, parent, false);
-        return new SectionViewHolder(view, onItemClick);
+    public SectionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemRvSectionBinding binding = DataBindingUtil.inflate(mInflater, R.layout.item_rv_section, parent, false);
+        return new SectionViewHolder(binding,onItemClick);
     }
-
     @Override
-    public void onBindViewHolder(SectionViewHolder holder, int position) {
-        setData(holder, position);
-    }
-
-    private void setData(SectionViewHolder holder, int position) {
-        holder.textView.setText(dataList.get(position).getTitle());
-//        holder.imageView.setBackgroundResource(dataList.get(position).getSectionImage());
-        Picasso.get().load(Tags.IMAGE_URL + dataList.get(position).getImage()).into(holder.imageView);
+    public void onBindViewHolder(@androidx.annotation.NonNull SectionViewHolder holder, int position) {
+        SectionViewHolder sectionViewHolder = (SectionViewHolder) holder;
+        sectionViewHolder.binding.setSectionModelData(dataList.get(position));
+        sectionViewHolder.itemView.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+                onItemClick.onSectionClick(sectionViewHolder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -58,28 +55,15 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
         return dataList.size();
     }
 
-
     public class SectionViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
-        ImageView imageView;
-        ONSectionClick itemClick;
+        public ItemRvSectionBinding binding;
+        ONSectionClick onItemClick;
+        public SectionViewHolder(@androidx.annotation.NonNull ItemRvSectionBinding binding,ONSectionClick onItemClick) {
+            super(binding.getRoot());
+            this.binding = binding;
+            this.onItemClick =onItemClick ;
 
-        SectionViewHolder(View itemView, ONSectionClick itemClick) {
-            super(itemView);
-            this.itemClick = itemClick;
-
-            textView = itemView.findViewById(R.id.item_rv_section_tv);
-            imageView = itemView.findViewById(R.id.item_rv_section_iv);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    itemClick.onSectionClick(getAdapterPosition());
-
-                }
-            });
         }
-
-
     }
 
     public interface ONSectionClick {

@@ -27,7 +27,12 @@ public class SplashActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         SharedPreferencesManger.setSharedPreferences(this);
-        userToken = SharedPreferencesManger.LoadUserData(this).getToken();
+        try {
+            userToken = SharedPreferencesManger.LoadUserData(this).getToken();
+
+        } catch (Exception e) {
+
+        }
         Transition transition = new TransitionSet();
         transition.setInterpolator(new LinearInterpolator());
         transition.setDuration(500);

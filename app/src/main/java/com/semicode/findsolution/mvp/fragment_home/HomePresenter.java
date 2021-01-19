@@ -1,23 +1,11 @@
 package com.semicode.findsolution.mvp.fragment_home;
 
 import android.content.Context;
-import android.content.Intent;
 
-import androidx.fragment.app.FragmentManager;
-
-import com.semicode.findsolution.R;
 import com.semicode.findsolution.data.api.Api;
-import com.semicode.findsolution.data.model.Slider.SlidersModel;
+import com.semicode.findsolution.data.model.sliderModel.SlidersModel;
 import com.semicode.findsolution.data.model.categories.Category;
-import com.semicode.findsolution.mvp.activtyHome.ActivityHomeView;
 import com.semicode.findsolution.tags.Tags;
-import com.semicode.findsolution.ui.ProfileActivity;
-import com.semicode.findsolution.ui.homeActivity.fragment.AboutAppFragment;
-import com.semicode.findsolution.ui.homeActivity.fragment.ChangeLanguageFragment;
-import com.semicode.findsolution.ui.homeActivity.fragment.ConnectUsFragment;
-import com.semicode.findsolution.ui.homeActivity.fragment.HomeFragment;
-import com.semicode.findsolution.ui.homeActivity.fragment.SubscriptionFragment;
-import com.semicode.findsolution.ui.homeActivity.fragment.TermsAndConditionFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;

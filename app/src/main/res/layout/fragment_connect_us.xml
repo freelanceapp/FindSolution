@@ -47,7 +47,6 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_view"
                     style="@style/out_line_et"
-
                     android:hint="@string/name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

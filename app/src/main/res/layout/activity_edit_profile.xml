@@ -68,6 +68,7 @@
                     android:id="@+id/input_view"
                     style="@style/out_line_et"
                     android:hint="@string/name_space"
+                    android:screenReaderFocusable="true"
                     app:hintTextColor="@color/color_edittext"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +125,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/choose_section"
-                        android:paddingStart="@dimen/_10sdp" />
+                        android:paddingStart="@dimen/_10sdp"
+                        android:editable="false"
+                        />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -168,50 +171,59 @@
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
-                    android:id="@+id/textInputLayout6"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/location_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_80sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/et_background"
-                    android:clipToPadding="false"
-                    android:orientation="vertical"
-                    app:hintTextColor="@color/color_edittext"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_margin="@dimen/_5sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start|top"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginTop="-10dp"
-                        android:background="@color/white"
-                        android:text="@string/location"
-                        android:textColor="@color/color_edittext"
-                        android:textSize="@dimen/medium_text" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start|top"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:text="@string/addess"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_text"
-
-                        />
-
-                    <com.google.android.gms.maps.MapView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_4sdp" />
-                </LinearLayout>
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/et_background"
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:padding="@dimen/_3sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/addess" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+
+                            android:background="@color/soft_gray"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:background="@color/white"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:text="@string/location"
+                        android:textSize="@dimen/medium_text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
                 <TextView
                     android:id="@+id/tv_phone"
                     android:layout_width="0dp"
@@ -223,9 +235,9 @@
                     android:hint="@string/phone_number"
                     android:paddingStart="@dimen/_5sdp"
                     app:drawableStartCompat="@drawable/ic_vector_phone"
-                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout6"
-                    app:layout_constraintStart_toStartOf="@+id/textInputLayout6"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+                    app:layout_constraintEnd_toEndOf="@+id/location_layout"
+                    app:layout_constraintStart_toStartOf="@+id/location_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/location_layout" />
 
                 <TextView
                     android:id="@+id/textView4"

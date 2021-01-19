@@ -145,11 +145,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapView2"
-                    android:layout_width="0dp"
+                <fragment
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="@dimen/_5sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -199,8 +197,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#E8FFE9"
-                        android:gravity="center_vertical"
                         android:drawablePadding="@dimen/_8sdp"
+                        android:gravity="center_vertical"
                         android:text="@string/whats_app"
                         android:textColor="@color/black"
                         android:textSize="@dimen/medium_text"
@@ -218,8 +216,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#C9E7FF"
-                        android:gravity="center_vertical"
                         android:drawablePadding="@dimen/_8sdp"
+                        android:gravity="center_vertical"
 
                         android:text="@string/phone_call"
                         android:textColor="@color/black"

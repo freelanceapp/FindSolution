@@ -1,7 +1,7 @@
 package com.semicode.findsolution.data.api;
 
 import com.semicode.findsolution.data.model.GeneralResponse;
-import com.semicode.findsolution.data.model.Slider.SlidersModel;
+import com.semicode.findsolution.data.model.sliderModel.SlidersModel;
 import com.semicode.findsolution.data.model.appInformation.AppInformation;
 import com.semicode.findsolution.data.model.categories.Category;
 import com.semicode.findsolution.data.model.loginModel.Login;
@@ -27,6 +27,14 @@ public interface ApiService {
     @POST("ClientRegister")
     Call<SignUpModel> signUp(
             @Part MultipartBody.Part logo,
+            @Part("phone_code") RequestBody phoneCode,
+            @Part("phone") RequestBody phone,
+            @Part("name") RequestBody name,
+            @Part("software_type") RequestBody softwareType
+    );
+    @Multipart
+    @POST("ClientRegister")
+    Call<SignUpModel> signUp(
             @Part("phone_code") RequestBody phoneCode,
             @Part("phone") RequestBody phone,
             @Part("name") RequestBody name,

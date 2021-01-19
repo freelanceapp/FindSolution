@@ -43,8 +43,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void intilView() {
         userModelData = SharedPreferencesManger.LoadUserData(this);
-        binding.userDetailsTvName.setText(userModelData.getName());
-        binding.userDetailsTvJopDetails.setText( userModelData.getPhoneCode()+""+userModelData.getPhone());
+        binding.setUserData(userModelData);
+//        binding.userDetailsTvName.setText(userModelData.getName());
+//        binding.userDetailsTvJopDetails.setText( userModelData.getPhoneCode()+""+userModelData.getPhone());
     }
 
 

@@ -34,9 +34,9 @@ public class ActivityHomePresenter {
     private ConnectUsFragment connectUsFragment;
     HomeFragment homeFragment;
     private ChangeLanguageFragment changeLanguageFragment;
-    private SubscriptionFragment subscriptionFragment;
+    private ContinueSubscriptionFragment subscriptionFragment;
     private TermsAndConditionFragment termsAndConditionFragment;
-    private ContinueSubscriptionFragment continueSubscriptionFragment;
+//    private ContinueSubscriptionFragment continueSubscriptionFragment;
 
     public ActivityHomePresenter(Context context, ActivityHomeView view, FragmentManager fragmentManager) {
         this.context = context;
@@ -207,7 +207,7 @@ public class ActivityHomePresenter {
 
     private void displayFragmentSubscription() {
         if (subscriptionFragment == null) {
-            subscriptionFragment = SubscriptionFragment.newInstance();
+            subscriptionFragment = ContinueSubscriptionFragment.newInstance();
         }
 
         if (aboutAppFragment != null && aboutAppFragment.isAdded()) {

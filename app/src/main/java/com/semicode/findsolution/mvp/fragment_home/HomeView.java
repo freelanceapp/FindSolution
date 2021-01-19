@@ -1,11 +1,9 @@
 package com.semicode.findsolution.mvp.fragment_home;
 
-import com.semicode.findsolution.data.model.Slider.SliderData;
+import com.semicode.findsolution.data.model.sliderModel.SliderData;
 import com.semicode.findsolution.data.model.categories.CategoryDate;
 
 import java.util.List;
-
-import okhttp3.ResponseBody;
 
 public interface HomeView {
 
